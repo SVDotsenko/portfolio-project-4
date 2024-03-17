@@ -1,5 +1,5 @@
 """
-ASGI config for pp4 project.
+ASGI config for codestar project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'pp4.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'codestar.settings')
 
 application = get_asgi_application()
