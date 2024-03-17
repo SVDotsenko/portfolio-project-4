@@ -5,4 +5,4 @@ from django.http import HttpResponse
 
 
 def my_blog(request):
-    return HttpResponse("Creating the database")
+    return HttpResponse("Databases and deployment")
