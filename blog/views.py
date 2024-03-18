@@ -1,7 +1,7 @@
-from django.http import HttpResponse
+from django.views import generic
+from .models import Book
 
-# Create your views here.
 
-
-def my_blog(request):
-    return HttpResponse("migration")
+class BookList(generic.ListView):
+    queryset = Book.objects.all()
+    template_name = "index.html"
