@@ -25,11 +25,15 @@
                         <tbody>
 
                         {% for book in object_list %}
-                        <tr>
-                            <td class="tm-product-name">{{book.title}}</td>
-                            <td class="text-center">{{book.author.name}}</td>
-                            <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                        </tr>
+                            <tr>
+                                <td class="tm-product-name">
+                                    <a href="{% url 'book_edit' book.id %}">
+                                        {{ book.title }}
+                                    </a>
+                                </td>
+                                <td class="text-center">{{ book.author.name }}</td>
+                                <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
+                            </tr>
                         {% endfor %}
                         </tbody>
                     </table>
