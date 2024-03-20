@@ -2,25 +2,40 @@
 {% block content %}
 
     <div class="row tm-content-row tm-mt-big">
-        <div class="tm-col tm-col-big">
+        <div class="col-xl-12 col-lg-12 tm-md-12 tm-sm-12 tm-col">
             <div class="bg-white tm-block h-100">
                 <div class="row">
-                    <div class="col-8">
-                        <h2 class="tm-block-title d-inline-block">The book List</h2>
+                    <div class="col-md-8 col-sm-12">
+                        <h2 class="tm-block-title d-inline-block">Books</h2>
 
                     </div>
-                    <div class="col-4 text-right">
-                        <a href="products.html" class="tm-link-black">View All</a>
+                    <div class="col-md-4 col-sm-12 text-right">
+                        <a href="add-product.html" class="btn btn-small btn-primary">Add New Book</a>
                     </div>
                 </div>
-                <ol class="tm-list-group tm-list-group-alternate-color tm-list-group-pad-big">
-                    {% for post in object_list %}
-                        <li class="tm-list-group-item">
-                            Title: {{post.title}},       Author: {{post.author.name}}
-                        </li>
-                    {% endfor %}
-                </ol>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped tm-table-striped-even mt-3">
+                        <thead>
+                        <tr class="tm-bg-gray">
+                            <th scope="col">Title</th>
+                            <th scope="col" class="text-center">Author</th>
+                            <th scope="col">&nbsp;</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for book in object_list %}
+                        <tr>
+                            <td class="tm-product-name">{{book.title}}</td>
+                            <td class="text-center">{{book.author.name}}</td>
+                            <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
+
 {% endblock %}
