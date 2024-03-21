@@ -16,8 +16,23 @@
                                 <label for="name" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">
                                     Book title
                                 </label>
-                                <input placeholder="Product name" value="In malesuada placerat" id="name" name="name"
-                                       type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
+                                <input placeholder="Product name" value="{{ book.title }}" id="name" name="name"
+                                       type="text"
+                                       class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <label for="category"
+                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Author</label>
+                                <select class="custom-select col-xl-9 col-lg-8 col-md-8 col-sm-7" id="category">
+                                    {% for author in authors %}
+                                        <option value="{{ author.id }}"
+                                                {% if author.id == book.author.id %}selected{% endif %}
+                                        >
+                                            {{ author.name }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
                             </div>
 
                             <div class="input-group mb-3">
