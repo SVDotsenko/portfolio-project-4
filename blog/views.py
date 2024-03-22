@@ -20,3 +20,9 @@ def book_edit(request, book_id):
             "authors": authors
         },
     )
+
+
+class AddBookView(generic.ListView):
+    model = Book
+    queryset = Author.objects.all()
+    template_name = "blog/create-book.html"
