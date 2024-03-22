@@ -8,10 +8,10 @@ class BookList(generic.ListView):
     template_name = "blog/index.html"
 
 
-def book_edit(request, id):
+def book_edit(request, book_id):
     authors = Author.objects.all()
-    queryset = Book.objects.filter(id=id)
-    book = get_object_or_404(queryset, id=id)
+    queryset = Book.objects.filter(id=book_id)
+    book = get_object_or_404(queryset, id=book_id)
     return render(
         request,
         "blog/create-update.html",
