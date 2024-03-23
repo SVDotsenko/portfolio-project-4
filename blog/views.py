@@ -1,5 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
+from django.http import HttpResponse, HttpResponseRedirect
+
+from .forms import AddBookForm
 from .models import Book, Author
 
 
@@ -26,3 +29,16 @@ class AddBookView(generic.ListView):
     model = Book
     queryset = Author.objects.all()
     template_name = "blog/create-book.html"
+
+
+def create_book(request):
+    if request.method == "POST":
+        book_form = AddBookForm(data=request.POST)
+        if book_form.is_valid():
+            book = book_form.save(commit=False)
+            book.title = request.POST["title"]
+            book.author = Author.objects.filter(id=request.POST["author"])[0]
+            book.reader = request.user
+            book.save()
+
+    return HttpResponseRedirect(reverse('home'))
