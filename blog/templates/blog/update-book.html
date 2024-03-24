@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
 
     <div class="row tm-mt-big">
@@ -11,20 +12,22 @@
                 </div>
                 <div class="row mt-4 tm-edit-product-row">
                     <div class="col-xl-7 col-lg-7 col-md-12">
-                        <form action="" class="tm-edit-product-form">
+                        <form action="{% url 'update_book' book.id %}" class="tm-edit-product-form" method="post">
+                            {% csrf_token %}
                             <div class="input-group mb-3">
-                                <label for="name" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">
+                                <label for="title" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">
                                     Book title
                                 </label>
-                                <input placeholder="Product name" value="{{ book.title }}" id="name" name="name"
+                                <input placeholder="Product name" value="{{ book.title }}" id="title" name="title"
                                        type="text"
                                        class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
                             </div>
 
                             <div class="input-group mb-3">
-                                <label for="category"
+                                <label for="author"
                                        class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Author</label>
-                                <select class="custom-select col-xl-9 col-lg-8 col-md-8 col-sm-7" id="category">
+                                <select class="custom-select col-xl-9 col-lg-8 col-md-8 col-sm-7" id="author" 
+                                        name="author">
                                     {% for author in authors %}
                                         <option value="{{ author.id }}"
                                                 {% if author.id == book.author.id %}selected{% endif %}
