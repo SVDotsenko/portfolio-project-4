@@ -13,7 +13,7 @@ class BookList(generic.ListView):
 class AddBookView(generic.ListView):
     model = Book
     queryset = Author.objects.all()
-    template_name = "blog/create-book.html"
+    template_name = "blog/book.html"
 
 
 def create_update_book(request, book_id=-1):
@@ -39,9 +39,9 @@ def create_update_book(request, book_id=-1):
 
     return render(
         request,
-        "blog/update-book.html",
+        "blog/book.html",
         {
             "book": book,
-            "authors": authors
+            "object_list": authors
         },
     )
