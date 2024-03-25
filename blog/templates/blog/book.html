@@ -7,62 +7,62 @@
             <div class="bg-white tm-block">
                 <div class="row">
                     <div class="col-12">
-                        {% if book %}
-                            <h2 class="tm-block-title d-inline-block">Edit Book</h2>
-                        {% else %}
-                            <h2 class="tm-block-title d-inline-block">Add Book</h2>
-                        {% endif %}
+                        <h2 class="tm-block-title d-inline-block">Add Book</h2>
                     </div>
                 </div>
                 <div class="row mt-4 tm-edit-product-row">
                     <div class="col-xl-7 col-lg-7 col-md-12">
-                        {% if book %}
-                            <form action="{% url 'update_book' book.id %}" class="tm-edit-product-form" method="post">
-                        {% else %}
-                            <form action="{% url 'create_book' %}" class="tm-edit-product-form" method="post"></form>
-                        {% endif %}
-                        {% csrf_token %}
-                        <div class="input-group mb-3">
-                            <label for="title" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">
-                                Book title
-                            </label>
-                            {% if book %}
-                                <input placeholder="Book title" value="{{ book.title }}" id="title" name="title"
-                                       type="text"
-                                       class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
-                            {% else %}
-                                <input placeholder="Product title" id="title" name="title" type="text"
-                                       class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
-                            {% endif %}
-
-                        </div>
-
-                        <div class="input-group mb-3">
-                            <label for="author"
-                                   class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Author</label>
-                            <select class="custom-select col-xl-9 col-lg-8 col-md-8 col-sm-7" id="author" name="author">
-                                {% for author in object_list %}
-                                    {% if book %}
-                                        <option value="{{ author.id }}"
-                                                {% if author.id == book.author.id %}selected{% endif %}>
-                                            {{ author.name }}
-                                        </option>
-                                    {% else %}
-                                        <option value="{{ author.id }}">{{ author.name }}</option>
-                                    {% endif %}
-                                {% endfor %}
-                            </select>
-                        </div>
-
-                        <div class="input-group mb-3">
-                            <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
+                        <form class="tm-edit-product-form"
                                 {% if book %}
-                                    <button type="submit" class="btn btn-primary" name="update">Update</button>
+                              action="{% url 'update_book' book.id %}"
                                 {% else %}
-                                    <button type="submit" class="btn btn-primary" name="create">Create</button>
+                              action="{% url 'create_book' %}"
                                 {% endif %}
+                              method="post">
+                            {% csrf_token %}
+                            <div class="input-group mb-3">
+                                <label for="title" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">
+                                    Book title
+                                </label>
+                                <input placeholder="Book title" id="title" name="title" type="text"
+                                       class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
+                                        {% if book %}
+                                       value="{{ book.title }}"
+                                        {% else %}
+                                       value=""
+                                        {% endif %}
+                                >
                             </div>
-                        </div>
+
+                            <div class="input-group mb-3">
+                                <label for="author"
+                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Author</label>
+                                <select class="custom-select col-xl-9 col-lg-8 col-md-8 col-sm-7" id="author"
+                                        name="author">
+                                    {% for author in object_list %}
+                                        {% if book %}
+                                            <option value="{{ author.id }}"
+                                                    {% if author.id == book.author.id %}selected{% endif %}>
+                                                {{ author.name }}
+                                            </option>
+                                        {% else %}
+                                            <option value="{{ author.id }}">{{ author.name }}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
+                                    <button type="submit" class="btn btn-primary">
+                                        {% if book %}        
+                                            Update
+                                        {% else %}
+                                            Create
+                                        {% endif %}
+                                    </button>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
