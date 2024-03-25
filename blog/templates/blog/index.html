@@ -32,7 +32,11 @@
                                     </a>
                                 </td>
                                 <td class="text-center">{{ book.author.name }}</td>
-                                <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
+                                <td>
+                                    <a href="{% url 'delete_book' book.id %}">
+                                        <i class="fas fa-trash-alt tm-trash-icon"></i>
+                                    </a>
+                                </td>
                             </tr>
                         {% endfor %}
                         </tbody>

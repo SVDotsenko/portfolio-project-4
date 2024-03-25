@@ -45,3 +45,8 @@ def create_update_book(request, book_id=-1):
             "object_list": authors
         },
     )
+
+
+def delete_book(request, book_id):
+    get_object_or_404(Book.objects.all(), id=book_id).delete()
+    return HttpResponseRedirect(reverse('home'))
