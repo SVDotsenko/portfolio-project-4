@@ -16,7 +16,7 @@
                                 {% if book %}
                               action="{% url 'update_book' book.id %}"
                                 {% else %}
-                              action="{% url 'create_book' %}"
+                              action="{% url 'add_book' %}"
                                 {% endif %}
                               method="post">
                             {% csrf_token %}
