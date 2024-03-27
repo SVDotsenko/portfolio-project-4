@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views import generic
 from django.views import View
 from .forms import AddBookForm
-from .models import Book, Author
+from author.models import Author
+from .models import Book
 
 
 class BookList(View):
@@ -10,7 +10,7 @@ class BookList(View):
         books = Book.objects.all()
         if book_id < 0:
             context = {'object_list': books}
-            return render(request, "blog/book/index.html", context)
+            return render(request, "blog/index.html", context)
         get_object_or_404(books, id=book_id).delete()
         return redirect('home')
 
@@ -21,7 +21,7 @@ class BookDetail(View):
         if book_id >= 0:
             queryset = Book.objects.filter(id=book_id)
             context['book'] = get_object_or_404(queryset, id=book_id)
-        return render(request, "blog/book/book.html", context)
+        return render(request, "blog/book.html", context)
 
     def post(self, request, book_id=-1):
         if book_id < 0:
@@ -38,8 +38,3 @@ class BookDetail(View):
             book.save()
 
         return redirect('home')
-
-
-class AuthorList(generic.ListView):
-    queryset = Author.objects.all()
-    template_name = "blog/author/index.html"
