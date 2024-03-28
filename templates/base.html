@@ -2,7 +2,7 @@
 
 {% url 'home' as home_url %}
 {% url 'authors' as authors_url %}
-{#{% url 'profile' as profile_url %}#}
+{% url 'reader' as reader_url %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Library management system1</title>
+    <title>Library management system</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
     <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
@@ -48,9 +48,10 @@
                                    href="{% url 'authors' %}">Authors</a>
                             </li>
 
-{#                            <li class="nav-item">#}
-{#                                <a class="nav-link" href="accounts.html">My profile</a>#}
-{#                            </li>#}
+                            <li class="nav-item">
+                                <a class="nav-link {% if request.path == reader_url %}active{% endif %}"
+                                   href="{% url 'reader' %}">My Profile</a>
+                            </li>
 
                         </ul>
 {#                        <ul class="navbar-nav">#}
