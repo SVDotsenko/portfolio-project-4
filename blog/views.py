@@ -8,15 +8,13 @@ from .models import Book
 
 class BookList(View):
     def get(self, request, book_id=-1):
-        if request.user.is_authenticated:
-            books = Book.objects.all()
-            if book_id < 0:
-                context = {'object_list': books}
-                return render(request, "blog/index.html", context)
+        books = Book.objects.all()
+        if book_id < 0:
+            context = {'object_list': books}
+            return render(request, "blog/index.html", context)
 
-            get_object_or_404(books, id=book_id).delete()
-            return redirect('home')
-        return render(request, "account/login.html")
+        get_object_or_404(books, id=book_id).delete()
+        return redirect('home')
 
 
 class BookDetail(View):
