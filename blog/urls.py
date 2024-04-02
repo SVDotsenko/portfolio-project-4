@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.urls import path
-
+from . import views
 from .views import BookDetail, BookList
 
 urlpatterns = [
@@ -8,4 +8,6 @@ urlpatterns = [
     path('book/', BookDetail.as_view(), name="add_book"),
     path('book/<int:book_id>/', BookDetail.as_view(), name="update_book"),
     path('book/<int:book_id>/delete', BookList.as_view(), name="delete_book"),
+    path('book/<int:book_id>/toggle_reader', views.toggle_reader,
+         name="toggle_reader"),
 ]

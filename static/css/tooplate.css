@@ -357,12 +357,12 @@ input[type="checkbox"]:focus {
   box-shadow: none;
 }
 
-.tm-trash-icon {
+.icon-color {
   color: #6e6c6c;
   cursor: pointer;
 }
 
-.tm-trash-icon:hover {
+.icon-color:hover {
   color: #9f1321;
 }
 

@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 
@@ -8,13 +9,21 @@ from .models import Book
 
 class BookList(View):
     def get(self, request, book_id=-1):
-        books = Book.objects.all()
+        books = Book.objects.all().order_by('id')
         if book_id < 0:
             context = {'object_list': books}
             return render(request, "blog/index.html", context)
 
         get_object_or_404(books, id=book_id).delete()
         return redirect('home')
+
+
+def toggle_reader(request, book_id):
+    books = Book.objects.all()
+    book = get_object_or_404(books, id=book_id)
+    book.reader = None if book.reader else get_user(request)
+    book.save()
+    return redirect('home')
 
 
 class BookDetail(View):
@@ -36,7 +45,6 @@ class BookDetail(View):
             book = book_form.save(commit=False)
             book.title = request.POST["title"]
             book.author = Author.objects.filter(id=request.POST["author"])[0]
-            book.reader = request.user
             book.save()
 
         return redirect('home')
