@@ -38,16 +38,23 @@
 
                                 <td class="text-center">
                                     {% if user.is_superuser %}
-                                        <a href="{% url 'update_book' book.id %}" data-toggle="tooltip"
-                                           title="edit this book"
-                                           class="mr-3">
-                                            <i class="fas fa-edit icon-color"></i>
-                                        </a>
+                                        {% if book.reader %}
+                                            <i class="fas fa-book-open icon-color" data-toggle="tooltip"
+                                               title="{{ book.reader.username }} is reading this book. 
+                                               The book must be returned before editing or deleting">
+                                            </i>
+                                        {% else %}
+                                            <a href="{% url 'update_book' book.id %}" data-toggle="tooltip"
+                                               title="edit this book"
+                                               class="mr-3">
+                                                <i class="fas fa-edit icon-color"></i>
+                                            </a>
 
-                                        <a href="{% url 'delete_book' book.id %}" data-toggle="tooltip"
-                                           title="delete this book">
-                                            <i class="fas fa-trash-alt icon-color"></i>
-                                        </a>
+                                            <a href="{% url 'delete_book' book.id %}" data-toggle="tooltip"
+                                               title="delete this book">
+                                                <i class="fas fa-trash-alt icon-color"></i>
+                                            </a>
+                                        {% endif %}
                                     {% else %}
                                         {% if book.reader %}
                                             {% if book.reader.id == user.id %}

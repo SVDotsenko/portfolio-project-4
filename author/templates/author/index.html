@@ -14,11 +14,11 @@
                     </div>
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-hover table-striped tm-table-striped-even mt-3">
+                    <table class="table table-striped tm-table-striped-even mt-3">
                         <thead>
                         <tr class="tm-bg-gray">
                             <th scope="col">Name</th>
-                            <th scope="col">&nbsp;</th>
+                            <th scope="col" class="text-center">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -26,14 +26,26 @@
                         {% for author in object_list %}
                             <tr>
                                 <td class="tm-product-name">
-                                    <a href="{% url 'update_author' author.id %}">
-                                        {{ author.name }}
-                                    </a>
+                                        {{ author.name }}                                    
                                 </td>
-                                <td>
-                                    <a href="{% url 'delete_author' author.id %}">
+                                <td class="text-center">
+                                    {% if author.read %}
+                                        <i class="fas fa-book-open icon-color" data-toggle="tooltip"
+                                           title="Someone is reading books by this author. 
+                                           The books should be returned before editing or deleting">
+                                        </i>
+                                    {% else %}
+                                        <a href="{% url 'update_author' author.id %}" data-toggle="tooltip"
+                                       title="Edit this author"
+                                       class="mr-3">
+                                        <i class="fas fa-edit icon-color"></i>
+                                    </a>                                    
+                                    <a href="{% url 'delete_author' author.id %}" data-toggle="tooltip"
+                                       title="Delete this author. All books by this author will be deleted">
                                         <i class="fas fa-trash-alt icon-color"></i>
                                     </a>
+                                    
+                                    {% endif %}
                                 </td>
                             </tr>
                         {% endfor %}

@@ -8,10 +8,14 @@
                 <div class="row">
                     <div class="col-12">
                         <h2 class="tm-block-title d-inline-block">
-                            {% if books %}
-                                I read these books
+                            {% if user.is_superuser %}
+                                I am administrator, I can only add, edit, delete books and authors, I can not read books
                             {% else %}
-                                I do not read any book
+                                {% if books %}
+                                    I read these books
+                                {% else %}
+                                    I do not read any book
+                                {% endif %}
                             {% endif %}
                         </h2>
                     </div>

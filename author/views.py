@@ -3,11 +3,20 @@ from django.views import View
 
 from author.forms import AddAuthorForm
 from author.models import Author
+from blog.models import Book
 
 
 class AuthorList(View):
+    def get_authors(self):
+        books = Book.objects.all()
+        authors = Author.objects.all().order_by('id')
+        for author in authors:
+            author.read = any(book.author == author and book.reader
+                              for book in books)
+        return authors
+
     def get(self, request, author_id=-1):
-        authors = Author.objects.all()
+        authors = self.get_authors()
         if author_id < 0:
             context = {'object_list': authors}
             return render(request, "author/index.html", context)
