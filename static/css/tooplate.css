@@ -137,7 +137,7 @@ a:focus {
 }
 
 .tm-col-big {
-  width: 70%;
+  width: 39%;
 }
 
 .tm-col-small {
@@ -165,7 +165,6 @@ ol {
 .tm-list-group > li {
   list-style-type: none;
   position: relative;
-  cursor: pointer;
   transition: all 0.3s ease;
   padding: 8px;
 }

@@ -7,6 +7,29 @@
             <div class="bg-white tm-block">
                 <div class="row">
                     <div class="col-12">
+                        <h2 class="tm-block-title d-inline-block">
+                            {% if books %}
+                                I read these books
+                            {% else %}
+                                I do not read any book
+                            {% endif %}
+                        </h2>
+                    </div>
+                </div>
+                <ol class="tm-list-group tm-list-group-alternate-color tm-list-group-pad-big">
+                    {% for book in books %}
+                        <li class="tm-list-group-item">
+                            {{ book.title }}
+                        </li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+
+        <div class="tm-col tm-col-big">
+            <div class="bg-white tm-block">
+                <div class="row">
+                    <div class="col-12">
                         <h2 class="tm-block-title">Information</h2>
                     </div>
                 </div>
@@ -37,7 +60,7 @@
                                 <input placeholder="name@email.com" id="email" name="email" type="email"
                                        class="form-control validate" value="{{ reader.email }}">
                             </div>
-                            
+
                             <div class="row">
                                 <div class="col-12 col-sm-4">
                                     <button type="submit" class="btn btn-primary">Update
