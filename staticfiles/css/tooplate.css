@@ -165,7 +165,6 @@ ol {
 .tm-list-group > li {
   list-style-type: none;
   position: relative;
-  cursor: pointer;
   transition: all 0.3s ease;
   padding: 8px;
 }
@@ -357,12 +356,12 @@ input[type="checkbox"]:focus {
   box-shadow: none;
 }
 
-.tm-trash-icon {
+.icon-color {
   color: #6e6c6c;
   cursor: pointer;
 }
 
-.tm-trash-icon:hover {
+.icon-color:hover {
   color: #9f1321;
 }
 
