@@ -17,7 +17,8 @@ class ReaderDetail(View):
         return render(request, "reader/reader.html", context)
 
     def post(self, request):
-        self.save_image(request)
+        if request.FILES.get('fileInput'):
+            self.save_image(request)
         user = get_user(request)
         user.username = request.POST['username']
         user.first_name = request.POST['first-name']
@@ -39,5 +40,5 @@ class ReaderDetail(View):
             image = image_form.save(commit=False)
             image.image = request.FILES['fileInput']
             if not hasattr(image, 'user'):
-                image.user = get_user(request)
+                image.user = reader
             image.save()
