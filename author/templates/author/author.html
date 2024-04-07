@@ -7,7 +7,7 @@
             <div class="bg-white tm-block">
                 <div class="row">
                     <div class="col-12">
-                        <h2 class="tm-block-title d-inline-block">{% if author %}
+                        <h2 class="tm-block-title d-inline-block">{% if form.name.value %}
                             Edit
                         {% else %}
                             Add
@@ -18,8 +18,8 @@
                 <div class="row mt-4 tm-edit-product-row">
                     <div class="col-xl-7 col-lg-7 col-md-12">
                         <form class="tm-edit-product-form"
-                                {% if author %}
-                              action="{% url 'update_author' author.id %}"
+                                {% if form.name.value %}
+                              action="{% url 'update_author' author_id %}"
                                 {% else %}
                               action="{% url 'add_author' %}"
                                 {% endif %}
@@ -29,20 +29,19 @@
                                 <label for="name" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">
                                     Name
                                 </label>
-                                <input placeholder="Author name" id="name" name="name" type="text"
-                                       class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
-                                        {% if author %}
-                                       value="{{ author.name }}"
-                                        {% else %}
-                                       value=""
-                                        {% endif %}
-                                >
+                                {{ form.name.as_widget }}
+                                <div class="invalid-tooltip">
+                                    At least one letter required
+                                </div>
+                                <div class="valid-tooltip">
+                                    Looks good!
+                                </div>
                             </div>
 
                             <div class="input-group mb-3">
                                 <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
-                                    <button type="submit" class="btn btn-primary">
-                                        {% if author %}        
+                                    <button type="submit" class="btn btn-primary" id="submit" disabled>
+                                        {% if form.name.value %}
                                             Update
                                         {% else %}
                                             Create
@@ -56,5 +55,19 @@
             </div>
         </div>
     </div>
-
+    <script>
+        const validateInput = () => {
+            const input = document.getElementById('name');
+            const button = document.getElementById('submit');
+            if (/[a-zA-Z]/.test(input.value)) {
+                input.classList.add('is-valid');
+                input.classList.remove('is-invalid');
+                button.disabled = false;
+            } else {
+                input.classList.add('is-invalid');
+                input.classList.remove('is-valid');
+                button.disabled = true;
+            }
+        }
+    </script>
 {% endblock %}
