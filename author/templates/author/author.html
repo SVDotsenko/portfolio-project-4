@@ -31,10 +31,10 @@
                                 </label>
                                 {{ form.name.as_widget }}
                                 <div class="invalid-tooltip">
-                                    At least one letter required
+                                    Client validation: At least one letter required
                                 </div>
                                 <div class="valid-tooltip">
-                                    Looks good!
+                                    Client validation: Looks good!
                                 </div>
                             </div>
 
@@ -59,8 +59,8 @@
         const validateInput = () => {
             const input = document.getElementById('name');
             const button = document.getElementById('submit');
+            setTimeout(() => input.classList.remove('is-invalid','is-valid'), 3000);
             if (/[a-zA-Z]/.test(input.value)) {
-                setTimeout(() => input.classList.remove('is-valid'), 2000);
                 input.classList.add('is-valid');
                 input.classList.remove('is-invalid');
                 button.disabled = false;
