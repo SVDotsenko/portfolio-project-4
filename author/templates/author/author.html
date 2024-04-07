@@ -17,12 +17,12 @@
                 </div>
                 <div class="row mt-4 tm-edit-product-row">
                     <div class="col-xl-7 col-lg-7 col-md-12">
-                        <form class="tm-edit-product-form"
+                        <form class="tm-edit-product-form" 
                                 {% if form.name.value %}
-                              action="{% url 'update_author' author_id %}"
+                              action="{% url 'update_author' author_id %}" 
                                 {% else %}
-                              action="{% url 'add_author' %}"
-                                {% endif %}
+                              action="{% url 'add_author' %}" 
+                                {% endif %} 
                               method="post">
                             {% csrf_token %}
                             <div class="input-group mb-3">
@@ -60,6 +60,7 @@
             const input = document.getElementById('name');
             const button = document.getElementById('submit');
             if (/[a-zA-Z]/.test(input.value)) {
+                setTimeout(() => input.classList.remove('is-valid'), 2000);
                 input.classList.add('is-valid');
                 input.classList.remove('is-invalid');
                 button.disabled = false;
