@@ -31,13 +31,9 @@
                                 <label for="title" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">
                                     Book title
                                 </label>
-                                <input placeholder="Book title" id="title" name="title" type="text"
+                                <input placeholder="Book title" id="title" name="title" type="text" required
                                        class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
-                                        {% if book %}
-                                       value="{{ book.title }}"
-                                        {% else %}
-                                       value=""
-                                        {% endif %}
+                                        {% if book %} value="{{ book.title }}" {% endif %}
                                 >
                             </div>
 
