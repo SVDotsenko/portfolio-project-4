@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 
-from author.forms import AddAuthorForm, NameForm
+from author.forms import AddAuthorForm, AuthorForm
 from author.models import Author
 from blog.models import Book
 
@@ -26,7 +26,7 @@ class AuthorList(View):
 
 class AuthorDetail(View):
     def get(self, request, author_id=-1):
-        form = NameForm()
+        form = AuthorForm()
         if author_id >= 0:
             name = get_object_or_404(Author, id=author_id).name
             form.fields['name'].initial = name

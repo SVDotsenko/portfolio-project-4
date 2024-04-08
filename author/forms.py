@@ -9,7 +9,7 @@ class AddAuthorForm(forms.ModelForm):
         fields = ('name',)
 
 
-class NameForm(forms.Form):
+class AuthorForm(forms.Form):
     name = forms.CharField(
         widget=forms.TextInput(attrs={
             'id': 'name',
