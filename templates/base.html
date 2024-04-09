@@ -28,7 +28,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <nav class="navbar navbar-expand-xl fixed-top navbar-light bg-light">
+                <nav class="navbar navbar-expand-xl navbar-light bg-light">
                     <a class="navbar-brand" href="#">
                         <i class="fas fa-3x fa-tachometer-alt tm-site-icon"></i>
                         <h1 class="tm-site-title mb-0">Dashboard</h1>
@@ -85,11 +85,9 @@
                 </nav>
             </div>
         </div>
-
-        <div class="content">
-            {% block content %}
-            {% endblock content %}
-        </div>
+    
+        {% block content %}
+        {% endblock content %}
 
     </div>
 </div>

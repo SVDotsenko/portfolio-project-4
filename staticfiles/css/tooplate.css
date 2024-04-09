@@ -70,6 +70,7 @@ a:focus {
   height: 100px;
   padding-left: 20px;
   padding-right: 20px;
+  margin-top: 20px;
 }
 
 .tm-logout-icon {
@@ -81,7 +82,7 @@ a:focus {
 }
 
 .tm-mt-big {
-  margin-top: 70px;
+  margin-top: 30px;
 }
 
 .tm-mt-small {
@@ -207,7 +208,6 @@ label {
 
 .btn {
   border-radius: 0;
-  padding: 13px 28px;
   transition: all 0.2s ease;
   max-width: 100%;
 }
@@ -456,7 +456,6 @@ footer {
   .tm-col-big,
   .tm-col-small {
     width: 100%;
-    min-height: 383px;
     height: auto;
   }
   .tm-block {
@@ -533,8 +532,15 @@ footer {
 }
 
 @media (max-width: 424px) {
+  .navbar {
+    margin-top: 0;
+  }
   .navbar-collapse {
     top: 107px;
+  }
+  body, .container {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
@@ -543,8 +549,4 @@ footer {
   color: #666666;
   border-color: #666666;
   cursor: not-allowed;
-}
-
-.content {
-    margin-top: 120px;
 }
