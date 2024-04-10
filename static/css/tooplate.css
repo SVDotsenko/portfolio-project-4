@@ -1,17 +1,12 @@
 /*
-
 Template 2108 Dashboard
-
 http://www.tooplate.com/view/2108-dashboard
-	
-
-COLOR CODES
-
-  Dark Gray: #656565
-  Light Gray: #E6E6E6
-  Blue: #0062BB
-  
 */
+
+:root {
+  --dark-gray: #656565;
+  --light-gray: #E6E6E6;
+}
 
 html {
   font-size: 17px;
@@ -32,14 +27,6 @@ body {
   padding-right: 50px;
 }
 
-.bg02 {
-	background-image: url(../img/dash-bg-02.jpg);
-}
-
-.bg03 {
-	background-image: url(../img/dash-bg-03.jpg);
-}
-
 a {
   transition: all 0.3s ease;
 }
@@ -54,7 +41,7 @@ a:focus {
 }
 
 .tm-site-icon {
-  color: #656565;
+  color: var(--dark-gray);
 }
 
 .tm-site-title {
@@ -62,7 +49,7 @@ a:focus {
   text-transform: uppercase;
   font-size: 2rem;
   margin-left: 1rem;
-  color: #656565;
+  color: var(--dark-gray);
   letter-spacing: 1px;
 }
 
@@ -100,7 +87,7 @@ a:focus {
 }
 
 .navbar-light .navbar-nav .nav-link {
-  color: #656565;
+  color: var(--dark-gray);
 }
 
 .navbar-light .navbar-nav .nav-link,
@@ -113,7 +100,7 @@ a:focus {
 .navbar-light .navbar-nav .nav-link.show,
 .navbar-light .navbar-nav .show > .nav-link,
 .navbar-light .navbar-nav a:hover {
-  background-color: #e6e6e6;
+  background-color: var(--light-gray);
 }
 
 .nav-item {
@@ -178,7 +165,7 @@ ol {
 }
 
 .tm-list-group-alternate-color > li:nth-child(odd) {
-  background-color: #e6e6e6;
+  background-color: var(--light-gray);
 }
 
 .tm-list-group > li:before {
