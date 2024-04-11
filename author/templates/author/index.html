@@ -4,54 +4,58 @@
     <div class="row tm-content-row tm-mt-big">
         <div class="col-xl-12 col-lg-12 tm-md-12 tm-sm-12 tm-col">
             <div class="bg-white tm-block h-100">
-                <div class="row">
-                    <div class="col-4">
-                        <h2 class="tm-block-title d-inline-block">Authors</h2>
+                {% if user.is_superuser %}
+                    <div class="row">
+                        <div class="col-4">
+                            <h2 class="tm-block-title d-inline-block">Authors</h2>
 
+                        </div>
+                        <div class="col-8 text-right">
+                            <a href="{% url 'add_author' %}" class="btn btn-small btn-primary">Add New Author</a>
+                        </div>
                     </div>
-                    <div class="col-8 text-right">
-                        <a href="{% url 'add_author' %}" class="btn btn-small btn-primary">Add New Author</a>
-                    </div>
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-striped tm-table-striped-even mt-3">
-                        <thead>
-                        <tr class="tm-bg-gray">
-                            <th scope="col">Name</th>
-                            <th scope="col" class="text-center">Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        {% for author in object_list %}
-                            <tr>
-                                <td class="tm-product-name">
-                                    {{ author.name }}
-                                </td>
-                                <td class="text-center">
-                                    {% if author.read %}
-                                        <i class="fas fa-book-open icon-color" data-toggle="tooltip"
-                                           title="Someone is reading books by this author. 
-                                           The books should be returned before editing or deleting">
-                                        </i>
-                                    {% else %}
-                                        <a href="{% url 'update_author' author.id %}" data-toggle="tooltip"
-                                           title="Edit this author"
-                                           class="mr-3">
-                                            <i class="fas fa-edit icon-color"></i>
-                                        </a>
-                                        <a href="{% url 'delete_author' author.id %}" data-toggle="tooltip"
-                                           title="Delete this author. All books by this author will be deleted">
-                                            <i class="fas fa-trash-alt icon-color"></i>
-                                        </a>
-
-                                    {% endif %}
-                                </td>
+                    <div class="table-responsive">
+                        <table class="table table-striped tm-table-striped-even mt-3">
+                            <thead>
+                            <tr class="tm-bg-gray">
+                                <th scope="col">Name</th>
+                                <th scope="col" class="text-center">Action</th>
                             </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
+                            </thead>
+                            <tbody>
+
+                            {% for author in object_list %}
+                                <tr>
+                                    <td class="tm-product-name">
+                                        {{ author.name }}
+                                    </td>
+                                    <td class="text-center">
+                                        {% if author.read %}
+                                            <i class="fas fa-book-open icon-color" data-toggle="tooltip"
+                                               title="Someone is reading books by this author. 
+                                           The books should be returned before editing or deleting">
+                                            </i>
+                                        {% else %}
+                                            <a href="{% url 'update_author' author.id %}" data-toggle="tooltip"
+                                               title="Edit this author"
+                                               class="mr-3">
+                                                <i class="fas fa-edit icon-color"></i>
+                                            </a>
+                                            <a href="{% url 'delete_author' author.id %}" data-toggle="tooltip"
+                                               title="Delete this author. All books by this author will be deleted">
+                                                <i class="fas fa-trash-alt icon-color"></i>
+                                            </a>
+
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <h1 class="text-center">You do not have permission to view this page.</h1>
+                {% endif %}
             </div>
         </div>
     </div>
