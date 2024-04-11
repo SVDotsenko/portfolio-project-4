@@ -42,28 +42,30 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="username">Username</label>
+                                <label class="sr-only" for="username">Username</label>
                                 <input placeholder="username name" id="username" name="username" type="text"
                                        class="form-control validate" value="{{ reader.username }}" disabled>
                             </div>
+
                             <div class="form-group">
-                                <label for="first-name">First name</label>
-                                <input placeholder="first name" id="first-name" name="first-name" type="text"
+                                <label class="sr-only" for="first-name">First name</label>
+                                <input placeholder="First name" id="first-name" name="first-name" type="text"
                                        class="form-control validate" value="{{ reader.first_name }}" required>
                             </div>
+
                             <div class="form-group">
-                                <label for="last-name">Last name</label>
-                                <input placeholder="last name" id="last-name" name="last-name" type="text"
+                                <label class="sr-only" for="last-name">Last name</label>
+                                <input placeholder="Last name" id="last-name" name="last-name" type="text"
                                        class="form-control" value="{{ reader.last_name }}" required>
                             </div>
                             <div class="form-group">
-                                <label for="email">Email</label>
+                                <label class="sr-only" for="email">Email</label>
                                 <input placeholder="name@email.com" id="email" name="email" type="email"
                                        class="form-control validate" value="{{ reader.email }}" required>
                             </div>
                             <div class="row">
                                 <div class="col-12 col-sm-4">
-                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <button type="submit" class="btn btn-primary" id="submit">Update</button>
                                 </div>
                             </div>
 
@@ -90,6 +92,18 @@
             const reader = new FileReader();
             reader.onload = () => document.getElementById('preview').src = reader.result;
             reader.readAsDataURL(event.target.files[0]);
+
+            const submit = document.getElementById('submit');
+            
+            setTimeout(() => {
+                submit.classList.remove('btn-primary');
+                submit.classList.add('btn-warning');
+            }, 200);
+            
+            setTimeout(() => {
+                submit.classList.remove('btn-warning');
+                submit.classList.add('btn-primary');
+            }, 600);
         }
     </script>
 {% endblock %}
