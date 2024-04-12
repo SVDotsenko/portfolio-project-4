@@ -15,10 +15,12 @@ class AuthorForm(forms.Form):
             'id': 'name',
             'name': 'name',
             'oninput': 'validateInput()',
-            'class': 'form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7',
+            'class': 'form-control validate col-xl-9 col-lg-8 col-md-8 '
+                     'col-sm-7',
             'placeholder': 'Author name',
             'type': 'text',
             'pattern': '[A-Z][a-z]*(\s[A-Z][a-z]*)*',
-            'title': 'Server validation: Each word must start with a capital letter',
+            'title': 'Server validation: Each word must start with a capital '
+                     'letter separated by a space',
         })
     )

@@ -519,15 +519,8 @@ footer {
 }
 
 @media (max-width: 424px) {
-  .navbar {
-    margin-top: 0;
-  }
   .navbar-collapse {
     top: 107px;
-  }
-  body, .container {
-    padding-left: 0;
-    padding-right: 0;
   }
   .table td,
   .table th {

@@ -5,7 +5,7 @@
         <div class="col-xl-12 col-lg-12 tm-md-12 tm-sm-12 tm-col">
             <div class="bg-white tm-block h-100">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-4 pt-2">
                         <h2 class="tm-block-title d-inline-block">Books</h2>
                     </div>
                     {% if user.is_superuser %}
@@ -45,7 +45,7 @@
                                         {% else %}
                                             <a href="{% url 'update_book' book.id %}" data-toggle="tooltip"
                                                title="edit this book"
-                                               class="mr-3">
+                                               class="mr-md-3 mr-0">
                                                 <i class="fas fa-edit icon-color"></i>
                                             </a>
 
