@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user
+from django.http import HttpResponseServerError
 from django.shortcuts import render, redirect
 from django.views import View
 from blog.models import Book
@@ -17,11 +18,11 @@ class ReaderDetail(View):
         return render(request, "reader/reader.html", context)
 
     def post(self, request):
+        if request.POST.get('emulate-error'):
+            raise HttpResponseServerError()
         if request.FILES.get('fileInput'):
             self.save_image(request)
         user = get_user(request)
-        if request.POST.get('emulate-error'):
-            user.username = request.POST['username']
         user.first_name = request.POST['first-name']
         user.last_name = request.POST['last-name']
         user.email = request.POST['email']
