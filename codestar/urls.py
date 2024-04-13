@@ -17,13 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.defaults import page_not_found as default_page_not_found
-
-
-def custom_page_not_found(request, exception):
-    response = default_page_not_found(request, exception)
-    response.template_name = '404.html'
-    return response
-
+from django.views.defaults import server_error as default_server_error
 
 urlpatterns = [
     path("", include("blog.urls"), name="blog-urls"),
@@ -32,3 +26,15 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path('admin/', admin.site.urls),
 ]
+
+
+def custom_page_not_found(request, exception):
+    response = default_page_not_found(request, exception)
+    response.template_name = '404.html'
+    return response
+
+
+def custom_server_error(request):
+    response = default_server_error(request)
+    response.template_name = '500.html'
+    return response

@@ -20,6 +20,8 @@ class ReaderDetail(View):
         if request.FILES.get('fileInput'):
             self.save_image(request)
         user = get_user(request)
+        if request.POST.get('emulate-error'):
+            user.username = request.POST['username']
         user.first_name = request.POST['first-name']
         user.last_name = request.POST['last-name']
         user.email = request.POST['email']

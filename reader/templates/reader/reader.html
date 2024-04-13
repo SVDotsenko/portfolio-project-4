@@ -67,6 +67,14 @@
                                 <div class="col-12 col-sm-4">
                                     <button type="submit" class="btn btn-primary" id="submit">Update</button>
                                 </div>
+
+                                <div class="form-group form-check d-flex align-items-end">
+                                    <input type="checkbox" class="form-check-input" id="emulate-error"
+                                           name="emulate-error">
+                                    <label class="form-check-label ml-2" for="exampleCheck1">
+                                        Simulate server error
+                                    </label>
+                                </div>
                             </div>
 
                         </div>
@@ -94,12 +102,12 @@
             reader.readAsDataURL(event.target.files[0]);
 
             const submit = document.getElementById('submit');
-            
+
             setTimeout(() => {
                 submit.classList.remove('btn-primary');
                 submit.classList.add('btn-warning');
             }, 200);
-            
+
             setTimeout(() => {
                 submit.classList.remove('btn-warning');
                 submit.classList.add('btn-primary');

@@ -329,7 +329,6 @@ input[type="checkbox"] {
   border: 1px solid black;
   box-sizing: border-box;
   position: relative;
-  box-sizing: content-box;
   width: 24px;
   height: 24px;
   transition: all 0.1s linear;
