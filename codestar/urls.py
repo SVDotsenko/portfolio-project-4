@@ -16,6 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.defaults import page_not_found as default_page_not_found
+
+
+def custom_page_not_found(request, exception):
+    response = default_page_not_found(request, exception)
+    response.template_name = '404.html'
+    return response
+
 
 urlpatterns = [
     path("", include("blog.urls"), name="blog-urls"),
