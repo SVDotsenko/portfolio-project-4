@@ -2,75 +2,47 @@
 {% load static %}
 {% block content %}
 
-    <div class="row tm-mt-big">
-        <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12">
-            <div class="bg-white tm-block">
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="tm-block-title d-inline-block">
-                            {% if book %}
-                                Edit
-                            {% else %}
-                                Add
-                            {% endif %}
-                            Book
-                        </h2>
-                    </div>
-                </div>
-                <div class="row mt-4 tm-edit-product-row">
-                    <div class="col-xl-7 col-lg-7 col-md-12">
-                        <form method="post"
-                                {% if book %}
-                              action="{% url 'update_book' book.id %}"
-                                {% else %}
-                              action="{% url 'add_book' %}"
-                                {% endif %}
-                        >
-                            {% csrf_token %}
-                            <div class="input-group mb-3">
-                                <label for="title" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">
-                                    Book title
-                                </label>
-                                <input placeholder="Book title" id="title" name="title" type="text" required
-                                       class="form-control col-xl-9 col-lg-8 col-md-8 col-sm-7"
-                                        {% if book %} value="{{ book.title }}" {% endif %}
-                                >
-                            </div>
+    <div class="tm-mt-big bg-white tm-block col-md-6 offset-md-3">
 
-                            <div class="input-group mb-3">
-                                <label for="author"
-                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Author</label>
-                                <select class="custom-select col-xl-9 col-lg-8 col-md-8 col-sm-7" id="author"
-                                        name="author">
-                                    {% for author in object_list %}
-                                        {% if book %}
-                                            <option value="{{ author.id }}"
-                                                    {% if author.id == book.author.id %}selected{% endif %}>
-                                                {{ author.name }}
-                                            </option>
-                                        {% else %}
-                                            <option value="{{ author.id }}">{{ author.name }}</option>
-                                        {% endif %}
-                                    {% endfor %}
-                                </select>
-                            </div>
+        <h2 class="tm-block-title text-center">{% if book %}Edit{% else %}Add{% endif %} Book</h2>
 
-                            <div class="input-group mb-3">
-                                <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
-                                    <button type="submit" class="btn btn-primary">
-                                        {% if book %}
-                                            Update
-                                        {% else %}
-                                            Create
-                                        {% endif %}
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+        <form method="post"
+                {% if book %}
+              action="{% url 'update_book' book.id %}"
+                {% else %}
+              action="{% url 'add_book' %}"
+                {% endif %}
+        >
+            {% csrf_token %}
+
+            <div class="input-group mb-3">
+                <label for="title" class="sr-only">Book title</label>
+                <input placeholder="Book title" id="title" name="title" type="text" required class="form-control"
+                        {% if book %} value="{{ book.title }}" {% endif %}>
             </div>
-        </div>
+
+            <div class="input-group mb-3">
+                <label for="author" class="sr-only">Author</label>
+                <select class="custom-select" id="author" name="author">
+                    {% for author in object_list %}
+                        {% if book %}
+                            <option value="{{ author.id }}"
+                                    {% if author.id == book.author.id %}selected{% endif %}>
+                                {{ author.name }}
+                            </option>
+                        {% else %}
+                            <option value="{{ author.id }}">{{ author.name }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+                {% if book %}Update{% else %}Create{% endif %}
+            </button>
+
+        </form>
     </div>
+
 
 {% endblock %}
