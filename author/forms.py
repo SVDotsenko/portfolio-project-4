@@ -14,8 +14,7 @@ class AuthorForm(forms.Form):
             'id': 'name',
             'name': 'name',
             'oninput': 'validateInput()',
-            'class': 'form-control validate col-xl-9 col-lg-8 col-md-8 '
-                     'col-sm-7',
+            'class': 'form-control',
             'placeholder': 'Author name',
             'type': 'text',
             'pattern': '^[A-Z][a-zA-Z]*( [A-Z][a-zA-Z]*)*$',

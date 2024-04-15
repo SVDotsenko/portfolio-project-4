@@ -2,60 +2,31 @@
 {% load static %}
 {% block content %}
 
-    <div class="row tm-mt-big">
-        <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12">
-            <div class="bg-white tm-block">
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="tm-block-title d-inline-block">
-                            {% if form.name.value %}
-                                Edit
-                            {% else %}
-                                Add
-                            {% endif %}
-                            Author
-                        </h2>
-                    </div>
-                </div>
-                <div class="row mt-4 tm-edit-product-row">
-                    <div class="col-xl-7 col-lg-7 col-md-12">
-                        <form method="post"
-                                {% if form.name.value %}
-                              action="{% url 'update_author' author_id %}"
-                                {% else %}
-                              action="{% url 'add_author' %}"
-                                {% endif %}
-                        >
-                            {% csrf_token %}
-                            <div class="input-group mb-3">
-                                <label for="name" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">
-                                    Name
-                                </label>
-                                {{ form.name.as_widget }}
-                                <div class="invalid-tooltip">
-                                    Client validation: At least one letter required
-                                </div>
-                                <div class="valid-tooltip">
-                                    Client validation: Looks good!
-                                </div>
-                            </div>
+    <div class="tm-mt-big bg-white tm-block col-md-6 offset-md-3">
 
-                            <div class="input-group mb-3">
-                                <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
-                                    <button type="submit" class="btn btn-primary" id="submit" disabled>
-                                        {% if form.name.value %}
-                                            Update
-                                        {% else %}
-                                            Create
-                                        {% endif %}
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+        <h2 class="tm-block-title text-center">{% if form.name.value %}Edit{% else %}Add{% endif %} Author</h2>
+
+        <form method="post"
+                {% if form.name.value %}
+              action="{% url 'update_author' author_id %}"
+                {% else %}
+              action="{% url 'add_author' %}"
+                {% endif %}
+        >
+            {% csrf_token %}
+
+            <div class="input-group mb-3">
+                <label for="name" class="sr-only">Name</label>
+                {{ form.name.as_widget }}
+                <div class="invalid-tooltip"> Client validation: At least one letter required</div>
+                <div class="valid-tooltip"> Client validation: Looks good!</div>
             </div>
-        </div>
+
+            <button type="submit" class="btn btn-primary btn-block" id="submit" disabled>
+                {% if form.name.value %}Update{% else %}Create{% endif %}
+            </button>
+
+        </form>
     </div>
     <script>
         const validateInput = () => {
