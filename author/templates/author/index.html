@@ -16,16 +16,16 @@
                     <div class="table-responsive">
                         <table class="table table-striped tm-table-striped-even mt-3">
                             <thead>
-                            <tr class="tm-bg-gray">
-                                <th scope="col">Name</th>
-                                <th scope="col" class="text-center">Action</th>
-                            </tr>
+                                <tr class="tm-bg-gray">
+                                    <th scope="col">Name</th>
+                                    <th scope="col" class="text-center">Action</th>
+                                </tr>
                             </thead>
                             <tbody>
 
                             {% for author in object_list %}
                                 <tr>
-                                    <td class="tm-product-name">
+                                    <td>
                                         {{ author.name }}
                                     </td>
                                     <td class="text-center">

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-    <form action="{% url 'reader' %}" class="tm-signup-form" method="post" enctype="multipart/form-data">
+    <form action="{% url 'reader' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="row tm-content-row tm-mt-big">
             <div class="tm-col tm-col-big">
@@ -44,13 +44,13 @@
                             <div class="form-group">
                                 <label class="sr-only" for="username">Username</label>
                                 <input placeholder="username name" id="username" name="username" type="text"
-                                       class="form-control validate" value="{{ reader.username }}" disabled>
+                                       class="form-control" value="{{ reader.username }}" disabled>
                             </div>
 
                             <div class="form-group">
                                 <label class="sr-only" for="first-name">First name</label>
                                 <input placeholder="First name" id="first-name" name="first-name" type="text"
-                                       class="form-control validate" value="{{ reader.first_name }}" required>
+                                       class="form-control" value="{{ reader.first_name }}" required>
                             </div>
 
                             <div class="form-group">
@@ -61,11 +61,11 @@
                             <div class="form-group">
                                 <label class="sr-only" for="email">Email</label>
                                 <input placeholder="name@email.com" id="email" name="email" type="email"
-                                       class="form-control validate" value="{{ reader.email }}" required>
+                                       class="form-control" value="{{ reader.email }}" required>
                             </div>
                             <div class="row">
-                                <div class="col-auto">
-                                    <button type="submit" class="btn btn-primary" id="submit">Update</button>
+                                <div class="{{ user.is_superuser|yesno:'col-12,col-10 col-sm-11' }}">
+                                    <button type="submit" class="btn btn-primary btn-block" id="submit">Update</button>
                                 </div>
                                 {% if not user.is_superuser %}
                                     <div class="form-group form-check d-flex align-items-end">
@@ -86,11 +86,12 @@
             <div class="tm-col tm-col-small">
                 <div class="bg-white tm-block">
                     <h2 class="tm-block-title">Profile Image</h2>
-                    <img src="{{ reader.image.url }}" alt="Profile Image" class="img-fluid" id="preview">
+                    <img src="{{ reader.image.url }}" alt="Profile Image" class="img-fluid d-block mx-auto" 
+                         id="preview">
                     <div class="custom-file mt-3 mb-3">
-                        <input name="fileInput" id="fileInput" type="file" style="display:none;"
+                        <input name="fileInput" id="fileInput" type="file" class="d-none"
                                onchange="previewImage(event)"/>
-                        <input type="button" class="btn btn-primary d-block mx-xl-auto" value="Upload New..."
+                        <input type="button" class="btn btn-primary btn-block d-block mx-xl-auto" value="Upload New..."
                                onclick="document.getElementById('fileInput').click();"/>
                     </div>
                 </div>

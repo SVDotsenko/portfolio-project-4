@@ -19,20 +19,20 @@
                 </div>
                 <div class="row mt-4 tm-edit-product-row">
                     <div class="col-xl-7 col-lg-7 col-md-12">
-                        <form class="tm-edit-product-form"
+                        <form method="post"
                                 {% if book %}
                               action="{% url 'update_book' book.id %}"
                                 {% else %}
                               action="{% url 'add_book' %}"
                                 {% endif %}
-                              method="post">
+                        >
                             {% csrf_token %}
                             <div class="input-group mb-3">
                                 <label for="title" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">
                                     Book title
                                 </label>
                                 <input placeholder="Book title" id="title" name="title" type="text" required
-                                       class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
+                                       class="form-control col-xl-9 col-lg-8 col-md-8 col-sm-7"
                                         {% if book %} value="{{ book.title }}" {% endif %}
                                 >
                             </div>

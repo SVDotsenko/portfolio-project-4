@@ -8,24 +8,24 @@
                 <div class="row">
                     <div class="col-12">
                         <h2 class="tm-block-title d-inline-block">
-                        {% if form.name.value %}
-                            Edit
-                        {% else %}
-                            Add
-                        {% endif %}
+                            {% if form.name.value %}
+                                Edit
+                            {% else %}
+                                Add
+                            {% endif %}
                             Author
                         </h2>
                     </div>
                 </div>
                 <div class="row mt-4 tm-edit-product-row">
                     <div class="col-xl-7 col-lg-7 col-md-12">
-                        <form class="tm-edit-product-form" 
+                        <form method="post"
                                 {% if form.name.value %}
-                              action="{% url 'update_author' author_id %}" 
+                              action="{% url 'update_author' author_id %}"
                                 {% else %}
-                              action="{% url 'add_author' %}" 
-                                {% endif %} 
-                              method="post">
+                              action="{% url 'add_author' %}"
+                                {% endif %}
+                        >
                             {% csrf_token %}
                             <div class="input-group mb-3">
                                 <label for="name" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">
@@ -61,7 +61,7 @@
         const validateInput = () => {
             const input = document.getElementById('name');
             const button = document.getElementById('submit');
-            setTimeout(() => input.classList.remove('is-invalid','is-valid'), 3000);
+            setTimeout(() => input.classList.remove('is-invalid', 'is-valid'), 3000);
             if (/[a-zA-Z]/.test(input.value)) {
                 input.classList.add('is-valid');
                 input.classList.remove('is-invalid');
