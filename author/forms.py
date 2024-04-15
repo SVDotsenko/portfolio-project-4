@@ -18,7 +18,7 @@ class AuthorForm(forms.Form):
                      'col-sm-7',
             'placeholder': 'Author name',
             'type': 'text',
-            'pattern': '[A-Z][a-z]*(\s[A-Z][a-z]*)*',
+            'pattern': '^[A-Z][a-zA-Z]*( [A-Z][a-zA-Z]*)*$',
             'title': 'Server validation: Each word must start with a capital '
                      'letter separated by a space',
         })

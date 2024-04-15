@@ -45,15 +45,12 @@ class AuthorFormTest(unittest.TestCase):
         pattern = form.fields['name'].widget.attrs['pattern']
         self.assertFalse(re.match(pattern, name))
 
-    # Unfortunately, this test does not work as it should,
-    # due to the fact that the regular expression that works correctly
-    # in the browser JS does not work correctly in Python
-    # def test_invalid_second_name(self):
-    #     """Test for invalid second name."""
-    #     name = "William shakespeare"
-    #     form = AuthorForm(data={'name': name})
-    #     pattern = form.fields['name'].widget.attrs['pattern']
-    #     self.assertFalse(re.match(pattern, name))
+    def test_invalid_second_name(self):
+        """Test for invalid second name."""
+        name = "William shakespeare"
+        form = AuthorForm(data={'name': name})
+        pattern = form.fields['name'].widget.attrs['pattern']
+        self.assertFalse(re.match(pattern, name))
 
     def test_empty_name(self):
         name = ""
