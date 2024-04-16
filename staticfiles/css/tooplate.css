@@ -448,8 +448,8 @@ footer {
     padding: 5px;
   }
 
-  .tm-block {
-    padding: 10px;
+  .tm-block.h-100 {
+    padding: 20px;
   }
 }
 
@@ -459,8 +459,8 @@ footer {
     top: 107px;
   }
 
-  .tm-block {
-    padding: 5px;
+  .tm-block.h-100 {
+    padding: 10px;
   }
 }
 
