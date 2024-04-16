@@ -15,9 +15,6 @@ html {
 body {
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
   overflow-x: hidden;
-}
-
-body {
   background-image: url(../img/dash-bg-01.jpg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -396,6 +393,7 @@ footer {
     width: 100%;
     height: auto;
   }
+
   .tm-block {
     padding: 30px;
   }
@@ -407,25 +405,6 @@ footer {
   .tm-table-actions-col-right {
     text-align: left;
     margin-top: 30px;
-  }
-}
-
-@media (max-width: 633px) {
-  .pagination {
-    flex-wrap: wrap;
-  }
-
-  .tm-pagination {
-    justify-content: flex-start;
-  }
-
-  .tm-pagination-label {
-    display: inline-block;
-    margin-right: 0;
-  }
-
-  .page-item {
-    margin-top: 10px;
   }
 }
 
@@ -463,14 +442,31 @@ footer {
   .tm-mt-big {
     margin-top: 45px;
   }
+
+  .table td,
+  .table th {
+    padding: 5px;
+  }
+
+  .tm-block {
+    padding: 10px;
+  }
 }
+
 
 @media (max-width: 424px) {
   .navbar-collapse {
     top: 107px;
   }
-  .table td,
-  .table th {
+
+  .tm-block {
     padding: 5px;
   }
+}
+
+.btn-primary.disabled, .btn-primary:disabled {
+  background-color: #cccccc;
+  color: #666666;
+  border-color: #666666;
+  cursor: not-allowed;
 }

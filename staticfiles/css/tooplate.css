@@ -15,9 +15,6 @@ html {
 body {
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
   overflow-x: hidden;
-}
-
-body {
   background-image: url(../img/dash-bg-01.jpg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -64,16 +61,8 @@ a:focus {
   font-size: 1.5em;
 }
 
-.tm-bg-black {
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
 .tm-mt-big {
   margin-top: 30px;
-}
-
-.tm-mt-small {
-  margin-top: 20px;
 }
 
 .tm-block {
@@ -131,21 +120,11 @@ a:focus {
   width: 21.95%;
 }
 
-.tm-link-black {
-  color: black;
-}
-
-.tm-link-black:hover,
-.tm-link-black:focus {
-  color: #0266c4;
-}
-
 ol {
   margin-bottom: 0;
 }
 
 .tm-list-group {
-  counter-reset: myOrderedListItemsCounter;
   padding-left: 0;
 }
 
@@ -169,17 +148,7 @@ ol {
 }
 
 .tm-list-group > li:before {
-  counter-increment: myOrderedListItemsCounter;
-  content: counter(myOrderedListItemsCounter) ".";
   margin-right: 0.5em;
-}
-
-.tm-list {
-  padding-left: 30px;
-}
-
-.tm-list > li {
-  margin-bottom: 20px;
 }
 
 .form-control {
@@ -217,26 +186,6 @@ label {
   color: black;
   background-color: #cdd4da;
   border-color: #999999;
-}
-
-.btn-danger {
-  color: #9f1321;
-  background-color: transparent;
-  border-color: #9f1321;
-}
-
-.btn-danger:hover {
-  color: #9f1321;
-  background-color: rgba(159, 19, 32, 0.27);
-  border-color: #9f1321;
-}
-
-.custom-file-input {
-  cursor: pointer;
-}
-
-.custom-file-label {
-  border-radius: 0;
 }
 
 .tm-btn-right {
@@ -329,7 +278,6 @@ input[type="checkbox"] {
   border: 1px solid black;
   box-sizing: border-box;
   position: relative;
-  box-sizing: content-box;
   width: 24px;
   height: 24px;
   transition: all 0.1s linear;
@@ -445,6 +393,7 @@ footer {
     width: 100%;
     height: auto;
   }
+
   .tm-block {
     padding: 30px;
   }
@@ -456,29 +405,6 @@ footer {
   .tm-table-actions-col-right {
     text-align: left;
     margin-top: 30px;
-  }
-
-  .tm-edit-product-row {
-    flex-direction: column-reverse;
-  }
-}
-
-@media (max-width: 633px) {
-  .pagination {
-    flex-wrap: wrap;
-  }
-
-  .tm-pagination {
-    justify-content: flex-start;
-  }
-
-  .tm-pagination-label {
-    display: inline-block;
-    margin-right: 0;
-  }
-
-  .page-item {
-    margin-top: 10px;
   }
 }
 
@@ -516,14 +442,24 @@ footer {
   .tm-mt-big {
     margin-top: 45px;
   }
+
+  .table td,
+  .table th {
+    padding: 5px;
+  }
+
+  .tm-block {
+    padding: 10px;
+  }
 }
+
 
 @media (max-width: 424px) {
   .navbar-collapse {
     top: 107px;
   }
-  .table td,
-  .table th {
+
+  .tm-block {
     padding: 5px;
   }
 }
