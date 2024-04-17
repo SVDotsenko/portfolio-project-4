@@ -48,32 +48,18 @@
                                                class="mr-md-3 mr-0">
                                                 <i class="fas fa-edit icon-color"></i>
                                             </a>
-
-                                            <form method="post" action="{% url 'delete_book' book.id %}"
-                                                  class="d-inline">
-                                                {% csrf_token %}
-                                                <button type="submit" data-toggle="tooltip" title="delete this book"
-                                                        class="btn btn-link">
-                                                    <i class="fas fa-trash-alt icon-color"></i>
-                                                </button>
-                                            </form>
+                                            {% include "post_icon.html" with id=book.id url='delete_book' title='delete this book' icon='fa-trash-alt' %}
                                         {% endif %}
                                     {% else %}
                                         {% if book.reader %}
                                             {% if book.reader.id == user.id %}
-                                                <a href="{% url 'toggle_reader' book.id %}" data-toggle="tooltip"
-                                                   title="return this book">
-                                                    <i class="fas fa-book-reader icon-color"></i>
-                                                </a>
+                                                {% include "post_icon.html" with id=book.id url='toggle_reader' title='return this book' icon='fa-book-reader' %}
                                             {% else %}
                                                 <i class="fas fa-book-open icon-color" data-toggle="tooltip"
                                                    title="{{ book.reader.username }} is reading this book"></i>
                                             {% endif %}
                                         {% else %}
-                                            <a href="{% url 'toggle_reader' book.id %}" data-toggle="tooltip"
-                                               title="get this book">
-                                                <i class="fas fa-book icon-color"></i>
-                                            </a>
+                                            {% include "post_icon.html" with id=book.id url='toggle_reader' title='get this book' icon='fa-book' %}
                                         {% endif %}
                                     {% endif %}
                                 </td>

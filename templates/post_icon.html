@@ -1,0 +1,6 @@
+<form method="post" action="{% url url id %}" class="d-inline">
+    {% csrf_token %}
+    <button type="submit" data-toggle="tooltip" title="{{ title }}" class="btn btn-link">
+        <i class="fas {{ icon }} icon-color"></i>
+    </button>
+</form>

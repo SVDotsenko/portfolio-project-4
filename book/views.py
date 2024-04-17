@@ -18,8 +18,7 @@ class BookList(View):
 
 
 def toggle_reader(request, book_id):
-    books = Book.objects.all()
-    book = get_object_or_404(books, id=book_id)
+    book = get_object_or_404(Book, id=book_id)
     book.reader = None if book.reader else get_user(request)
     book.save()
     return redirect('home')
