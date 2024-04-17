@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'cloudinary',
-    'blog',
+    'book',
     'author',
     'reader',
 ]

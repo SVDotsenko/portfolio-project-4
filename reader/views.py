@@ -2,7 +2,7 @@ from django.contrib.auth import get_user
 from django.http import HttpResponseServerError
 from django.shortcuts import render, redirect
 from django.views import View
-from blog.models import Book
+from book.models import Book
 from reader.forms import AddProfileImageForm
 from reader.models import ProfileImage
 

@@ -12,7 +12,7 @@ class BookList(View):
         books = Book.objects.all().order_by('id')
         if book_id < 0:
             context = {'object_list': books}
-            return render(request, "blog/index.html", context)
+            return render(request, "book/index.html", context)
 
         get_object_or_404(books, id=book_id).delete()
         return redirect('home')
@@ -32,7 +32,7 @@ class BookDetail(View):
         if book_id >= 0:
             queryset = Book.objects.filter(id=book_id)
             context['book'] = get_object_or_404(queryset, id=book_id)
-        return render(request, "blog/book.html", context)
+        return render(request, "book/book.html", context)
 
     def post(self, request, book_id=-1):
         if book_id < 0:

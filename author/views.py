@@ -3,7 +3,7 @@ from django.views import View
 
 from author.forms import AddAuthorForm, AuthorForm
 from author.models import Author
-from blog.models import Book
+from book.models import Book
 
 
 class AuthorList(View):
