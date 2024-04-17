@@ -23,7 +23,7 @@
                             </thead>
                             <tbody>
 
-                            {% for author in object_list %}
+                            {% for author in authors %}
                                 <tr>
                                     <td>
                                         {{ author.name }}
@@ -40,11 +40,7 @@
                                                class="mr-3">
                                                 <i class="fas fa-edit icon-color"></i>
                                             </a>
-                                            <a href="{% url 'delete_author' author.id %}" data-toggle="tooltip"
-                                               title="Delete this author. All books by this author will be deleted">
-                                                <i class="fas fa-trash-alt icon-color"></i>
-                                            </a>
-
+                                            {% include "post_icon.html" with id=author.id url='delete_author' title='Delete this author. All books by this author will be deleted' icon='fa-trash-alt' %}
                                         {% endif %}
                                     </td>
                                 </tr>
