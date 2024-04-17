@@ -25,7 +25,7 @@
                         </thead>
                         <tbody>
 
-                        {% for book in object_list %}
+                        {% for book in books %}
                             <tr>
                                 <td>
                                     {{ book.title }}
@@ -49,10 +49,14 @@
                                                 <i class="fas fa-edit icon-color"></i>
                                             </a>
 
-                                            <a href="{% url 'delete_book' book.id %}" data-toggle="tooltip"
-                                               title="delete this book">
-                                                <i class="fas fa-trash-alt icon-color"></i>
-                                            </a>
+                                            <form method="post" action="{% url 'delete_book' book.id %}"
+                                                  class="d-inline">
+                                                {% csrf_token %}
+                                                <button type="submit" data-toggle="tooltip" title="delete this book"
+                                                        class="btn btn-link">
+                                                    <i class="fas fa-trash-alt icon-color"></i>
+                                                </button>
+                                            </form>
                                         {% endif %}
                                     {% else %}
                                         {% if book.reader %}

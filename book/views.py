@@ -8,13 +8,12 @@ from .models import Book
 
 
 class BookList(View):
-    def get(self, request, book_id=-1):
-        books = Book.objects.all().order_by('id')
-        if book_id < 0:
-            context = {'object_list': books}
-            return render(request, "book/index.html", context)
+    def get(self, request):
+        return render(request, "book/books.html",
+                      {'books': Book.objects.all().order_by('id')})
 
-        get_object_or_404(books, id=book_id).delete()
+    def post(self, request, book_id):
+        get_object_or_404(Book, id=book_id).delete()
         return redirect('home')
 
 

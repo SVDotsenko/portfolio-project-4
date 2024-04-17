@@ -19,7 +19,7 @@ class AuthorList(View):
         authors = self.get_authors()
         if author_id < 0:
             context = {'object_list': authors}
-            return render(request, "author/index.html", context)
+            return render(request, "author/authors.html", context)
         get_object_or_404(authors, id=author_id).delete()
         return redirect('authors')
 

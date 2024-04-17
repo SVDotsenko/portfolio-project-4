@@ -1,7 +1,4 @@
-/*
-Template 2108 Dashboard
-http://www.tooplate.com/view/2108-dashboard
-*/
+/*Template 2108 Dashboard http://www.tooplate.com/view/2108-dashboard*/
 
 :root {
   --dark-gray: #656565;
@@ -303,10 +300,6 @@ input[type="checkbox"]:focus {
   width: 15px;
 }
 
-footer {
-  margin-bottom: 35px;
-}
-
 .custom-select {
   height: 50px;
   border-radius: 0;
@@ -321,10 +314,6 @@ footer {
   align-items: center;
   justify-content: center;
   color: #c8c8c8;
-}
-
-.tm-login-col {
-  max-width: 600px;
 }
 
 @media (min-width: 992px) {
@@ -351,12 +340,6 @@ footer {
   }
   .tm-table-actions-col-right {
     margin-top: 30px;
-  }
-}
-
-@media (max-width: 1350px) {
-  .nav-item {
-    margin-right: 1px;
   }
 }
 
@@ -469,4 +452,8 @@ footer {
   color: #666666;
   border-color: #666666;
   cursor: not-allowed;
+}
+
+.btn.btn-link {
+  padding: 0 0 3px;
 }
