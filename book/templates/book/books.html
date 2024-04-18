@@ -1,75 +1,70 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <div class="row tm-content-row tm-mt-big">
-        <div class="col-sm-12 tm-col">
-            <div class="bg-white tm-block h-100">
-                <div class="row">
-                    <div class="col-4 pt-2">
-                        <h2 class="tm-block-title d-inline-block">Books</h2>
-                    </div>
-                    {% if user.is_superuser %}
-                        <div class="col-8 text-right">
-                            <a href="{% url 'add_book' %}" class="btn btn-small btn-primary">Add Book</a>
-                        </div>
-                    {% endif %}
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-hover table-striped tm-table-striped-even mt-3">
-                        <thead>
-                        <tr class="tm-bg-gray">
-                            <th scope="col">Title</th>
-                            <th scope="col" class="text-center">Author</th>
-                            <th scope="col" class="text-center">Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        {% for book in books %}
-                            <tr>
-                                <td>
-                                    {{ book.title }}
-                                </td>
-
-                                <td class="text-center">
-                                    {{ book.author.name }}
-                                </td>
-
-                                <td class="text-center">
-                                    {% if user.is_superuser %}
-                                        {% if book.reader %}
-                                            <i class="fas fa-book-open icon-color" data-toggle="tooltip"
-                                               title="{{ book.reader.username }} is reading this book.
-                                               The book must be returned before editing or deleting">
-                                            </i>
-                                        {% else %}
-                                            <a href="{% url 'update_book' book.id %}" data-toggle="tooltip"
-                                               title="edit this book"
-                                               class="mr-md-3 mr-0">
-                                                <i class="fas fa-edit icon-color"></i>
-                                            </a>
-                                            {% include "post_icon.html" with id=book.id url='delete_book' title='delete this book' icon='fa-trash-alt' %}
-                                        {% endif %}
-                                    {% else %}
-                                        {% if book.reader %}
-                                            {% if book.reader.id == user.id %}
-                                                {% include "post_icon.html" with id=book.id url='toggle_reader' title='return this book' icon='fa-book-reader' %}
-                                            {% else %}
-                                                <i class="fas fa-book-open icon-color" data-toggle="tooltip"
-                                                   title="{{ book.reader.username }} is reading this book"></i>
-                                            {% endif %}
-                                        {% else %}
-                                            {% include "post_icon.html" with id=book.id url='toggle_reader' title='get this book' icon='fa-book' %}
-                                        {% endif %}
-                                    {% endif %}
-                                </td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
+    <div class="tm-mt-big bg-white tm-block h-100">
+        <div class="row">
+            <div class="col-4 pt-2">
+                <h2 class="tm-block-title d-inline-block">Books</h2>
             </div>
+            {% if user.is_superuser %}
+                <div class="col-8 text-right">
+                    <a href="{% url 'add_book' %}" class="btn btn-small btn-primary">Add Book</a>
+                </div>
+            {% endif %}
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-striped tm-table-striped-even mt-3">
+                <thead>
+                <tr class="tm-bg-gray">
+                    <th scope="col">Title</th>
+                    <th scope="col" class="text-center">Author</th>
+                    <th scope="col" class="text-center">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for book in books %}
+                    <tr>
+                        <td>
+                            {{ book.title }}
+                        </td>
+
+                        <td class="text-center">
+                            {{ book.author.name }}
+                        </td>
+
+                        <td class="text-center">
+                            {% if user.is_superuser %}
+                                {% if book.reader %}
+                                    <i class="fas fa-book-open icon-color" data-toggle="tooltip"
+                                       title="{{ book.reader.username }} is reading this book.
+                                               The book must be returned before editing or deleting">
+                                    </i>
+                                {% else %}
+                                    <a href="{% url 'update_book' book.id %}" data-toggle="tooltip"
+                                       title="edit this book"
+                                       class="mr-md-3 mr-0">
+                                        <i class="fas fa-edit icon-color"></i>
+                                    </a>
+                                    {% include "post_icon.html" with id=book.id url='delete_book' title='delete this book' icon='fa-trash-alt' %}
+                                {% endif %}
+                            {% else %}
+                                {% if book.reader %}
+                                    {% if book.reader.id == user.id %}
+                                        {% include "post_icon.html" with id=book.id url='toggle_reader' title='return this book' icon='fa-book-reader' %}
+                                    {% else %}
+                                        <i class="fas fa-book-open icon-color" data-toggle="tooltip"
+                                           title="{{ book.reader.username }} is reading this book"></i>
+                                    {% endif %}
+                                {% else %}
+                                    {% include "post_icon.html" with id=book.id url='toggle_reader' title='get this book' icon='fa-book' %}
+                                {% endif %}
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
-
 {% endblock %}
