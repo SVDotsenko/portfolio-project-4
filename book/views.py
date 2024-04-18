@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 
 from author.models import Author
-from .forms import AddBookForm
+from .forms import BookForm
 from .models import Book
 
 
@@ -34,10 +34,10 @@ class BookDetail(View):
 
     def post(self, request, book_id=-1):
         if book_id < 0:
-            book_form = AddBookForm(data=request.POST)
+            book_form = BookForm(data=request.POST)
         else:
             book = get_object_or_404(Book, id=book_id)
-            book_form = AddBookForm(data=request.POST, instance=book)
+            book_form = BookForm(data=request.POST, instance=book)
 
         if book_form.is_valid():
             book = book_form.save(commit=False)

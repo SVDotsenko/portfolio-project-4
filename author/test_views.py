@@ -44,5 +44,5 @@ class TestAuthorView(TestCase):
     def test_successful_author_delete(self):
         self.client.login(username='myUsername', password='myPassword')
         self.assertEqual(Author.objects.count(), 1)
-        self.client.get(reverse('delete_author', kwargs={'author_id': 1}))
+        self.client.post(reverse('delete_author', kwargs={'author_id': 1}))
         self.assertEqual(Author.objects.count(), 0)
