@@ -16,8 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.views.defaults import page_not_found as default_page_not_found
-from django.views.defaults import server_error as default_server_error
+from django.views.generic import TemplateView
+from django.views.defaults import (
+    page_not_found as default_page_not_found,
+    server_error as default_server_error,
+    permission_denied as default_permission_denied,
+)
 
 urlpatterns = [
     path("", include("book.urls"), name="book-urls"),
@@ -25,7 +29,14 @@ urlpatterns = [
     path("reader/", include("reader.urls")),
     path("accounts/", include("allauth.urls")),
     path('admin/', admin.site.urls),
+    path('403/', TemplateView.as_view(template_name="403.html"), name='403'),
 ]
+
+
+def custom_permission_denied(request, exception):
+    response = default_permission_denied(request, exception)
+    response.template_name = '403.html'
+    return response
 
 
 def custom_page_not_found(request, exception):

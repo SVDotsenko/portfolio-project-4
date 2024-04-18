@@ -46,3 +46,13 @@ class TestAuthorView(TestCase):
         self.assertEqual(Author.objects.count(), 1)
         self.client.post(reverse('delete_author', kwargs={'author_id': 1}))
         self.assertEqual(Author.objects.count(), 0)
+
+    def test_get_access_to_author_page_not_admin(self):
+        self.user = User.objects.create_user(
+            username='reader',
+            password='readerPassword',
+            email='test@test.com'
+        )
+        self.client.login(username='reader', password='readerPassword')
+        response = self.client.get(reverse('authors'))
+        self.assertIn('403', response.url)
