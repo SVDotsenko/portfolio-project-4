@@ -15,12 +15,22 @@ class TestAuthorView(TestCase):
         self.author = Author(name="Test Author")
         self.author.save()
 
-    def test_render_authors_page_authorised_user(self):
+    def test_render_authors_page_authorised_user_admin(self):
         self.client.login(username='myUsername', password='myPassword')
         response = self.client.get(reverse('authors'))
         self.assertEqual(response.status_code, 200)
         self.assertIn(b"Authors", response.content)
         self.assertIn(b"Add Author", response.content)
+
+    def test_render_authors_page_authorised_user_not_admin(self):
+        self.user = User.objects.create_user(
+            username='reader',
+            password='readerPassword',
+            email='test@test.com'
+        )
+        self.client.login(username='reader', password='readerPassword')
+        response = self.client.get(reverse('authors'))
+        self.assertIn('403', response.url)
 
     def test_render_authors_page_unauthorised_user(self):
         response = self.client.get(reverse('authors'))
@@ -37,22 +47,13 @@ class TestAuthorView(TestCase):
         self.client.login(username='myUsername', password='myPassword')
         new_name = 'William Shakespeare'
         self.client.post(reverse('update_author', kwargs={
-            'author_id': 1}), {'name': new_name})
+            'author_id': self.author.id}), {'name': new_name})
         updated_name = Author.objects.get(id=1).name
         self.assertEqual(updated_name, new_name)
 
     def test_successful_author_delete(self):
         self.client.login(username='myUsername', password='myPassword')
         self.assertEqual(Author.objects.count(), 1)
-        self.client.post(reverse('delete_author', kwargs={'author_id': 1}))
+        self.client.post(
+            reverse('delete_author', kwargs={'author_id': self.author.id}))
         self.assertEqual(Author.objects.count(), 0)
-
-    def test_get_access_to_author_page_not_admin(self):
-        self.user = User.objects.create_user(
-            username='reader',
-            password='readerPassword',
-            email='test@test.com'
-        )
-        self.client.login(username='reader', password='readerPassword')
-        response = self.client.get(reverse('authors'))
-        self.assertIn('403', response.url)
