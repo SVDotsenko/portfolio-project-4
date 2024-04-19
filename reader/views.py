@@ -27,7 +27,7 @@ class ReaderDetail(View):
         user.last_name = request.POST['last-name']
         user.email = request.POST['email']
         user.save()
-        return redirect('home')
+        return redirect('books')
 
     def save_image(self, request):
         reader = get_user(request)
