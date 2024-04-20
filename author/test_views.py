@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import reverse
+
 from author.models import Author
 
 
@@ -46,6 +47,12 @@ class TestAuthorView(TestCase):
     def test_successful_author_update(self):
         self.client.login(username='myUsername', password='myPassword')
         new_name = 'William Shakespeare'
+        response = self.client.get(reverse('update_author', kwargs={
+            'author_id': self.author.id}))
+
+        self.assertEqual(response.context['form_input'].fields['name'].initial,
+                         self.author.name)
+
         self.client.post(reverse('update_author', kwargs={
             'author_id': self.author.id}), {'name': new_name})
         updated_name = Author.objects.get(id=1).name

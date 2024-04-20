@@ -9,7 +9,7 @@ from django.urls import reverse
 from reader.models import ProfileImage
 
 
-class TestProfileDetailView(TestCase):
+class TestProfileDetail(TestCase):
 
     def setUp(self):
         self.user = User.objects.create_user(
