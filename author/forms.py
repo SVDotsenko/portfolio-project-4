@@ -2,13 +2,13 @@ from django import forms
 from author.models import Author
 
 
-class AddAuthorForm(forms.ModelForm):
+class AuthorForm(forms.ModelForm):
     class Meta:
         model = Author
         fields = ('name',)
 
 
-class AuthorForm(forms.Form):
+class AuthorFormInput(forms.Form):
     name = forms.CharField(
         widget=forms.TextInput(attrs={
             'id': 'name',
