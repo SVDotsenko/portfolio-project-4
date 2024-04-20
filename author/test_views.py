@@ -55,7 +55,7 @@ class TestAuthorView(TestCase):
 
         self.client.post(reverse('update_author', kwargs={
             'author_id': self.author.id}), {'name': new_name})
-        updated_name = Author.objects.get(id=1).name
+        updated_name = Author.objects.get(id=self.author.id).name
         self.assertEqual(updated_name, new_name)
 
     def test_successful_author_delete(self):

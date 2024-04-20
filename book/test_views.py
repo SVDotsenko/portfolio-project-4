@@ -35,10 +35,13 @@ class TestBookView(TestCase):
     def test_successful_book_update(self):
         self.client.login(username='myUsername', password='myPassword')
         new_title = 'Book title2'
+        response = self.client.get(reverse('update_book',
+                                           kwargs={'book_id': self.book.id}))
+        self.assertEqual(response.context['book'].id, self.book.id)
         self.client.post(
             reverse('update_book', kwargs={'book_id': self.book.id}),
             {'title': new_title, 'author': self.author.id})
-        updated_title = Book.objects.get(id=1).title
+        updated_title = Book.objects.get(id=self.book.id).title
         self.assertEqual(updated_title, new_title)
 
     def test_successful_book_delete(self):
