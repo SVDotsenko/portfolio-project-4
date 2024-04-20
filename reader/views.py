@@ -3,11 +3,11 @@ from django.http import HttpResponseServerError
 from django.shortcuts import render, redirect
 from django.views import View
 from book.models import Book
-from reader.forms import AddProfileImageForm
+from reader.forms import ProfileImageForm
 from reader.models import ProfileImage
 
 
-class ReaderDetail(View):
+class ProfileDetail(View):
     def get(self, request):
         reader = get_user(request)
         books = Book.objects.filter(reader=reader)
@@ -34,9 +34,9 @@ class ReaderDetail(View):
         image = ProfileImage.objects.filter(user=reader).first()
 
         if image:
-            image_form = AddProfileImageForm(data=request.POST, instance=image)
+            image_form = ProfileImageForm(data=request.POST, instance=image)
         else:
-            image_form = AddProfileImageForm(data=request.POST)
+            image_form = ProfileImageForm(data=request.POST)
 
         if image_form.is_valid():
             image = image_form.save(commit=False)

@@ -2,7 +2,7 @@
 
 {% url 'books' as books_url %}
 {% url 'authors' as authors_url %}
-{% url 'reader' as reader_url %}
+{% url 'profile' as profile_url %}
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
@@ -62,9 +62,9 @@
                         </li>
                     {% endif %}
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == reader_url %}active{% endif %}" data-toggle="tooltip"
+                        <a class="nav-link {% if request.path == profile_url %}active{% endif %}" data-toggle="tooltip"
                            title="{{ user.username }}"
-                           href="{% url 'reader' %}"> My Profile
+                           href="{% url 'profile' %}"> My Profile
                         </a>
                     </li>
                 </ul>

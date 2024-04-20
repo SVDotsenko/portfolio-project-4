@@ -1,8 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.urls import path
 
-from .views import ReaderDetail
+from .views import ProfileDetail
 
 urlpatterns = [
-    path('', login_required(ReaderDetail.as_view()), name='reader'),
+    path('', login_required(ProfileDetail.as_view()), name='profile'),
 ]
