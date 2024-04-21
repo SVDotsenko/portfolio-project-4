@@ -10,5 +10,5 @@ coverage html
 rm .coverage
 start coverage/lcov-report/index.html
 start htmlcov/index.html
-cd htmlcov
-rm .gitignore
+#cd htmlcov
+#rm .gitignore
