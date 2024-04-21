@@ -28,20 +28,5 @@
 
         </form>
     </div>
-    <script>
-        const validateInput = () => {
-            const input = document.getElementById('name');
-            const button = document.getElementById('submit');
-            setTimeout(() => input.classList.remove('is-invalid', 'is-valid'), 3000);
-            if (/[a-zA-Z]/.test(input.value)) {
-                input.classList.add('is-valid');
-                input.classList.remove('is-invalid');
-                button.disabled = false;
-            } else {
-                input.classList.add('is-invalid');
-                input.classList.remove('is-valid');
-                button.disabled = true;
-            }
-        }
-    </script>
+    <script src="{% static 'js/script.js' %}" type="text/javascript"></script>
 {% endblock %}

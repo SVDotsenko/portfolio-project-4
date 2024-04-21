@@ -99,23 +99,5 @@
             </div>
         </div>
     </form>
-    <script>
-        const previewImage = event => {
-            const reader = new FileReader();
-            reader.onload = () => document.getElementById('preview').src = reader.result;
-            reader.readAsDataURL(event.target.files[0]);
-
-            const submit = document.getElementById('submit');
-
-            setTimeout(() => {
-                submit.classList.remove('btn-primary');
-                submit.classList.add('btn-warning');
-            }, 200);
-
-            setTimeout(() => {
-                submit.classList.remove('btn-warning');
-                submit.classList.add('btn-primary');
-            }, 600);
-        }
-    </script>
+    <script src="{% static 'js/script.js' %}" type="text/javascript"></script>
 {% endblock %}
