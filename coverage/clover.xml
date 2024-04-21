@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1713689585911" clover="3.2.0">
-  <project timestamp="1713689585911" name="All files">
+<coverage generated="1713694774987" clover="3.2.0">
+  <project timestamp="1713694774987" name="All files">
     <metrics statements="24" coveredstatements="24" conditionals="6" coveredconditionals="5" methods="6" coveredmethods="4" elements="36" coveredelements="33" complexity="0" loc="24" ncloc="24" packages="1" files="1" classes="1"/>
-    <file name="script.js" path="C:\repositories\courses\codeinstitute\pp4\pp4\staticfiles\js\script.js">
+    <file name="script.js" path="C:\repositories\courses\codeinstitute\pp4\pp4\static\js\script.js">
       <metrics statements="24" coveredstatements="24" conditionals="6" coveredconditionals="5" methods="6" coveredmethods="4"/>
       <line num="1" count="1" type="stmt"/>
       <line num="2" count="2" type="stmt"/>

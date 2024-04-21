@@ -7,24 +7,24 @@ if os.path.isfile('env.py'):
     import env
 
 DEBUG = False
-BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
-SECRET_KEY = os.environ.get('SECRET_KEY')
-ACCOUNT_EMAIL_VERIFICATION = 'none'
-LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
-USE_I18N = True
-USE_TZ = True
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+LOGIN_REDIRECT_URL = 'books'
 ROOT_URLCONF = 'library.urls'
 WSGI_APPLICATION = 'library.wsgi.application'
 SITE_ID = 1
-LOGIN_REDIRECT_URL = 'books'
-ALLOWED_HOSTS = [".herokuapp.com", "127.0.0.1", "localhost"]
+USE_TZ = True
+USE_I18N = True
+TIME_ZONE = 'UTC'
+LANGUAGE_CODE = 'en-us'
+STATIC_URL = 'static/'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+SECRET_KEY = os.environ.get('SECRET_KEY')
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+BASE_DIR = Path(__file__).resolve().parent.parent
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 CSRF_TRUSTED_ORIGINS = ["https://*.codeanyapp.com", "https://*.herokuapp.com"]
+ALLOWED_HOSTS = [".herokuapp.com", "127.0.0.1", "localhost"]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
