@@ -359,3 +359,7 @@ input[type="checkbox"]:focus {
 .btn.btn-link {
   padding: 0 0 3px;
 }
+
+.modal {
+  z-index: 10000;
+}

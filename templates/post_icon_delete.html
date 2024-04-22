@@ -1,0 +1,47 @@
+<button type="button" data-toggle="modal" class="btn btn-link" data-target="#modalCenter">
+    <i class="fas {{ icon }} icon-color" data-toggle="tooltip" title="{{ title }}"></i>
+</button>
+
+<div class="modal fade" id="modalCenter" tabindex="-1" role="dialog" aria-labelledby="modalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCenterTitle">Deleting action</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% if book or author %}
+                <div class="modal-body">
+                    {% if book %}
+                        <p>You are going to delete the book <b>{{ book.title }}</b> by <b>{{ book.author.name }}</b>.
+                        </p>
+                    {% else %}
+                        <p>You are going to delete the author <b>{{ author.name }}</b>.</p>
+                        <p>
+                            <u>All books by this author will be deleted.</u>
+                        </p>
+                    {% endif %}
+                    <p>This action cannot be undone!</p>
+                    Are you sure you want to proceed deleting?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <form method="post" action="{% url url id %}" class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Yes</button>
+                    </form>
+                </div>
+            {% else %}
+                <div class="modal-body">
+                    Something went wrong. <a href="https://www.linkedin.com/in/svdotsenko/overlay/contact-info"
+                                             target="_blank">Contact</a> with support team to clarifier details.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Ok</button>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
