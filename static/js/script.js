@@ -1,9 +1,3 @@
-$(document).ready(() => {
-    if ($(window).width() > 576) {
-        $('[data-toggle="tooltip"]').tooltip();
-    }
-})
-
 const validateInput = () => {
     const input = document.getElementById('name');
     const button = document.getElementById('submit');

@@ -61,6 +61,7 @@ describe('previewImage', () => {
                 add: jest.fn(),
                 remove: jest.fn(),
             },
+            focus: jest.fn(),
         };
         document.getElementById.mockReturnValueOnce(mockSubmit);
         previewImage(mockEvent);
