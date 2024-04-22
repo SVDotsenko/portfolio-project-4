@@ -23,7 +23,7 @@
 
             <div class="input-group mb-3">
                 <label for="author" class="sr-only">Author</label>
-                <select class="custom-select" id="author" name="author">
+                <select class="custom-select" id="author" name="author" required>
                     {% for author in object_list %}
                         {% if book %}
                             <option value="{{ author.id }}"
