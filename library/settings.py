@@ -6,7 +6,7 @@ import dj_database_url
 if os.path.isfile('env.py'):
     import env
 
-DEBUG = False
+DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
 LOGIN_REDIRECT_URL = 'books'
 ROOT_URLCONF = 'library.urls'
 WSGI_APPLICATION = 'library.wsgi.application'

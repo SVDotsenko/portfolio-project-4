@@ -1,3 +1,6 @@
+$(document).ready(() => $('[data-toggle="tooltip"]').tooltip());
+$(document).ready(() => $('#modalCenter').on('shown.bs.modal', () => $('.btn-secondary').focus()));
+
 const validateInput = () => {
     const input = document.getElementById('name');
     const button = document.getElementById('submit');
@@ -28,6 +31,7 @@ const previewImage = event => {
     setTimeout(() => {
         submit.classList.remove('btn-warning');
         submit.classList.add('btn-primary');
+        submit.focus()
     }, 600);
 }
 
