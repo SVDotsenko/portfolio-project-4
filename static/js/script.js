@@ -1,5 +1,8 @@
-$(document).ready(() => $('[data-toggle="tooltip"]').tooltip());
-$(document).ready(() => $('#modalCenter').on('shown.bs.modal', () => $('.btn-secondary').focus()));
+$(document).ready(() => {
+    if ($(window).width() > 576) {
+        $('[data-toggle="tooltip"]').tooltip();
+    }
+})
 
 const validateInput = () => {
     const input = document.getElementById('name');
