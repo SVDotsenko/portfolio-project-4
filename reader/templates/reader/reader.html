@@ -64,10 +64,10 @@
                                        class="form-control" value="{{ reader.email }}" required>
                             </div>
                             <div class="row">
-                                <div class="{{ user.is_superuser|yesno:'col-12,col-10 col-sm-11' }}">
+                                <div class="{% if user.is_superuser or DEBUG %}col-12{% else %}col-10 col-sm-11{% endif %}">
                                     <button type="submit" class="btn btn-primary btn-block" id="submit">Update</button>
                                 </div>
-                                {% if not user.is_superuser %}
+                                {% if not user.is_superuser and not DEBUG %}
                                     <div class="form-group form-check d-flex align-items-end">
                                         <input type="checkbox" class="form-check-input" id="emulate-error"
                                                name="emulate-error" data-toggle="tooltip"

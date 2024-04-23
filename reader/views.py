@@ -2,6 +2,7 @@ from django.contrib.auth import get_user
 from django.http import HttpResponseServerError
 from django.shortcuts import render, redirect
 from django.views import View
+from django.conf import settings
 from book.models import Book
 from reader.forms import ProfileImageForm
 from reader.models import ProfileImage
@@ -14,7 +15,7 @@ class ProfileDetail(View):
         image = ProfileImage.objects.filter(user=reader)
         if image:
             reader.image = image[0].image
-        context = {'reader': reader, 'books': books}
+        context = {'reader': reader, 'books': books, 'DEBUG': settings.DEBUG}
         return render(request, "reader/reader.html", context)
 
     def post(self, request):
