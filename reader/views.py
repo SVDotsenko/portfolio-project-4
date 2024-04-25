@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user
+from django.contrib.auth.models import User
 from django.http import HttpResponseServerError
 from django.shortcuts import render, redirect
 from django.views import View
@@ -10,7 +11,7 @@ from reader.models import ProfileImage
 
 class ProfileDetail(View):
     def get(self, request):
-        reader = get_user(request)
+        reader = User.objects.get(pk=2)
         books = Book.objects.filter(reader=reader)
         image = ProfileImage.objects.filter(user=reader)
         if image:
