@@ -28,7 +28,7 @@ const previewImage = event => {
     setTimeout(() => {
         submit.classList.remove('btn-warning');
         submit.classList.add('btn-primary');
-        submit.focus()
+        submit.focus();
     }, 600);
 }
 
