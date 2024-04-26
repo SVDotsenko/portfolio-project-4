@@ -4,7 +4,9 @@
 
     <div class="tm-mt-big bg-white tm-block col-md-6 offset-md-3">
 
-        <h2 class="tm-block-title text-center">{% if form_input.name.value %}Edit{% else %}Add{% endif %} Author</h2>
+        <h2 class="tm-block-title text-center mb-4">
+            {% if form_input.name.value %}Edit{% else %}Add{% endif %} Author
+        </h2>
 
         <form method="post"
                 {% if form_input.name.value %}
@@ -15,14 +17,14 @@
         >
             {% csrf_token %}
 
-            <div class="input-group mb-3">
+            <div class="input-group mb-2">
                 <label for="name" class="sr-only">Name</label>
                 {{ form_input.name.as_widget }}
                 <div class="invalid-tooltip"> Client validation: At least one letter required</div>
                 <div class="valid-tooltip"> Client validation: Looks good!</div>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block" id="submit" disabled>
+            <button type="submit" class="btn btn-primary w-100" id="submit" disabled>
                 {% if form_input.name.value %}Update{% else %}Create{% endif %}
             </button>
 

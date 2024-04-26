@@ -1,16 +1,14 @@
-<button type="button" data-toggle="modal" class="btn btn-link" data-target="#modalCenter">
+<button type="button" data-bs-toggle="modal" class="btn btn-link" data-bs-target="#modalCenter">
     <i class="fas {{ icon }} icon-color" data-toggle="tooltip" title="{{ title }}"></i>
 </button>
 
-<div class="modal fade" id="modalCenter" tabindex="-1" role="dialog" aria-labelledby="modalCenterTitle"
-     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="modalCenter" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="modalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalCenterTitle">Deleting action</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             {% if book or author %}
                 <div class="modal-body">
@@ -27,7 +25,7 @@
                     Are you sure you want to proceed deleting?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
                     <form method="post" action="{% url url id %}" class="d-inline">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-danger">Yes</button>
@@ -35,8 +33,9 @@
                 </div>
             {% else %}
                 <div class="modal-body">
-                    Something went wrong. <a href="mailto:support@eman.com?subject=Internal%20Server%20Error&body=I%20encountered%20an%20internal%20server%20error%20on%20your%20website.%20Please%20look%20into%20this%20issue."
-                                             target="_blank"> Contact </a> with support team to clarifier details.
+                    Something went wrong. <a
+                        href="mailto:support@eman.com?subject=Internal%20Server%20Error&body=I%20encountered%20an%20internal%20server%20error%20on%20your%20website.%20Please%20look%20into%20this%20issue."
+                        target="_blank"> Contact </a> with support team to clarifier details.
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-info" data-dismiss="modal">Ok</button>

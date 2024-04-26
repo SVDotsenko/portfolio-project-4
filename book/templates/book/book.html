@@ -4,7 +4,9 @@
 
     <div class="tm-mt-big bg-white tm-block col-md-6 offset-md-3">
 
-        <h2 class="tm-block-title text-center">{% if book %}Edit{% else %}Add{% endif %} Book</h2>
+        <h2 class="tm-block-title text-center mb-4">
+            {% if book %}Edit{% else %}Add{% endif %} Book
+        </h2>
 
         <form method="post"
                 {% if book %}
@@ -21,9 +23,9 @@
                         {% if book %} value="{{ book.title }}" {% endif %}>
             </div>
 
-            <div class="input-group mb-3">
+            <div class="input-group mb-4">
                 <label for="author" class="sr-only">Author</label>
-                <select class="custom-select" id="author" name="author" required>
+                <select class="custom-select form-select" id="author" name="author" required>
                     {% for author in object_list %}
                         {% if book %}
                             <option value="{{ author.id }}"
@@ -37,7 +39,7 @@
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block">
+            <button type="submit" class="btn btn-primary w-100">
                 {% if book %}Update{% else %}Create{% endif %}
             </button>
 

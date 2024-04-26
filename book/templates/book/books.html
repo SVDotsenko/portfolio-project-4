@@ -2,16 +2,13 @@
 {% block content %}
 
     <div class="tm-mt-big bg-white tm-block h-100">
-        <div class="row">
-            <div class="col-4 pt-2">
-                <h2 class="tm-block-title d-inline-block">Books</h2>
-            </div>
+        <div class="d-flex justify-content-between align-items-center">
+            <h2 class="tm-block-title">Books</h2>
             {% if user.is_superuser %}
-                <div class="col-8 text-right">
-                    <a href="{% url 'add_book' %}" class="btn btn-small btn-primary">Add Book</a>
-                </div>
+                <a href="{% url 'add_book' %}" class="btn btn-small btn-primary">Add Book</a>
             {% endif %}
         </div>
+
         <div class="table-responsive">
             <table class="table table-striped tm-table-striped-even mt-3">
                 <thead>
@@ -21,7 +18,7 @@
                     <th scope="col" class="text-center">Action</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody class="table-group-divider">
 
                 {% for book in books %}
                     <tr>
@@ -42,8 +39,7 @@
                                     </i>
                                 {% else %}
                                     <a href="{% url 'update_book' book.id %}" data-toggle="tooltip"
-                                       title="Edit this book"
-                                       class="mr-md-3 mr-0">
+                                       title="Edit this book" class="me-md-5 me-3 text-decoration-none">
                                         <i class="fas fa-edit icon-color"></i>
                                     </a>
                                     {% include "post_icon_delete.html" with id=book.id url='delete_book' title='Delete this book' icon='fa-trash-alt' book=book %}

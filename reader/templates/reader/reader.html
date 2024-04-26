@@ -64,8 +64,8 @@
                                        class="form-control" value="{{ reader.email }}" required>
                             </div>
                             <div class="row">
-                                <div class="{% if user.is_superuser or DEBUG %}col-12{% else %}col-10 col-sm-11{% endif %}">
-                                    <button type="submit" class="btn btn-primary btn-block" id="submit">Update</button>
+                                <div class="{% if user.is_superuser or DEBUG %}col-12{% else %}col-10 col-sm-11{% endif %} d-grid">
+                                    <button type="submit" class="btn btn-primary" id="submit">Update</button>
                                 </div>
                                 {% if not user.is_superuser and not DEBUG %}
                                     <div class="form-group form-check d-flex align-items-end">
@@ -88,10 +88,10 @@
                     <h2 class="tm-block-title text-center">Profile Image</h2>
                     <img src="{{ reader.image.url }}" alt="Profile Image" class="img-fluid d-block mx-auto"
                          id="preview">
-                    <div class="custom-file mt-3 mb-3">
+                    <div class="custom-file mt-3 mb-3 d-grid">
                         <input name="fileInput" id="fileInput" type="file" class="d-none"
                                onchange="previewImage(event)"/>
-                        <input type="button" class="btn btn-primary btn-block d-block mx-xl-auto" value="Upload New..."
+                        <input type="button" class="btn btn-primary" value="Upload New..."
                                onclick="document.getElementById('fileInput').click();" data-toggle="tooltip"
                                title="To save, click Update button"/>
                     </div>
