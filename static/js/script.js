@@ -20,16 +20,15 @@ const previewImage = event => {
 
     const submit = document.getElementById('submit');
 
+    Toast.setToastMessage("To save, click Update button");
+    Toast.setToastColor.YELLOW();
+    Toast.showToast(3);
+
     setTimeout(() => {
         submit.classList.remove('btn-primary');
         submit.classList.add('btn-warning');
-    }, 200);
-
-    setTimeout(() => {
-        submit.classList.remove('btn-warning');
-        submit.classList.add('btn-primary');
         submit.focus();
-    }, 600);
+    }, 3000);
 }
 
 if (typeof module !== 'undefined' && module.exports) {
