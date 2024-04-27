@@ -1,7 +1,5 @@
-import json
 from django.contrib import messages
 from django.contrib.auth import get_user
-from django.contrib.messages import get_messages
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from author.models import Author
@@ -11,12 +9,8 @@ from .models import Book
 
 class BookList(View):
     def get(self, request):
-        notes = [
-            {'message': message.message, 'tags': message.tags}
-            for message in get_messages(request)]
         return render(request, "book/books.html",
-                      {'books': Book.objects.all().order_by('id'),
-                       'messages_json': json.dumps(notes)})
+                      {'books': Book.objects.all().order_by('id')})
 
     def post(self, request, book_id):
         get_object_or_404(Book, id=book_id).delete()

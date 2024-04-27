@@ -1,13 +1,7 @@
+на мобильном устройстве изменить ширину toast
+баг, на мобильном устройстве не раскрывается кнопка меню
+добавить тоасты для всего что можно поменять
 проверить все роуты к которым у пользователя не должно быть доступов
-
-сделать сообщения
-https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+FSD101_WTS+2023_Q3/courseware/56a2da0940b4411d8a38c2b093a22c60/24613de4bafc4032882cc1b8799bd4f0/?child=last
-messages.add_message(
-request, messages.SUCCESS,
-'Comment submitted and awaiting approval'
-)
-https://getbootstrap.com/docs/4.1/components/alerts/
-- добавить попапы при сохранении, посмотреть как это сделано в классном проекте
 
 сделать диаграмму моделей и их связей
 
