@@ -26,7 +26,7 @@
 <body>
 <div class="container">
     <nav class="navbar navbar-expand-xl sticky-top navbar-light bg-light">
-        <a class="navbar-brand" href="https://github.com/SVDotsenko/portfolio-project-4?tab=readme-ov-file#e-library" 
+        <a class="navbar-brand" href="https://github.com/SVDotsenko/portfolio-project-4?tab=readme-ov-file#e-library"
            target="_blank" title="Read about this application">
             <i class="fas fa-3x fa-book tm-site-icon"></i>
             <h1 class="tm-site-title mb-0 d-none d-sm-block">E-Library</h1>
@@ -76,14 +76,14 @@
                         <a class="nav-link d-flex {% if request.path == logout_url %}active{% endif %}"
                            href="{% url 'account_logout' %}" data-toggle="tooltip" title="{{ user.username }}">
                             <i class="far fa-user tm-logout-icon"></i>
-                           <span>Logout</span> 
+                            <span>Logout</span>
                         </a>
                     </li>
                 </ul>
             {% endif %}
         </div>
     </nav>
-
+    {% include "toast.html" %}
     {% block content %}
     {% endblock content %}
 
@@ -93,6 +93,11 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     $(document).ready(() => $('[data-toggle="tooltip"]').tooltip());
+    
+    if ('{{ messages_json }}' && JSON.parse('{{ messages_json | escapejs }}')[0]) {
+        bootstrap.Toast.getOrCreateInstance(document.getElementById('liveToast')).show();
+    }
+
 </script>
 </body>
 
