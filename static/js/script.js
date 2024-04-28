@@ -20,9 +20,9 @@ const previewImage = event => {
 
     const submit = document.getElementById('submit');
 
-    Toast.setToastMessage("To save, click Update button");
-    Toast.setToastColor.YELLOW();
-    Toast.showToast(3);
+    Toast.setMessage("To save, click Update button");
+    Toast.setColor.warning();
+    Toast.show(1);
 
     setTimeout(() => {
         submit.classList.remove('btn-primary');

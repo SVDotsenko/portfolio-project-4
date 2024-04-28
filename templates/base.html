@@ -7,7 +7,6 @@
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -83,11 +82,13 @@
             {% endif %}
         </div>
     </nav>
+    
     {% for message in messages %}
         {% include "toast.html" with message=message %}
     {% empty %}
         {% include "toast.html" %}
-    {% endfor %}     
+    {% endfor %}   
+
     {% block content %}
     {% endblock content %}
 
