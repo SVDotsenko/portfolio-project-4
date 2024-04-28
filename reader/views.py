@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth import get_user
 from django.http import HttpResponseServerError
 from django.shortcuts import render, redirect
@@ -28,6 +29,8 @@ class ProfileDetail(View):
         user.last_name = request.POST['last-name']
         user.email = request.POST['email']
         user.save()
+        messages.add_message(request, messages.SUCCESS,
+                             f'Updated profile for {user}')
         return redirect('books')
 
     def save_image(self, request):
