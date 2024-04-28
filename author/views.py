@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from author.forms import AuthorForm, AuthorFormInput
@@ -15,7 +16,10 @@ class AuthorList(View):
         return render(request, "author/authors.html", {'authors': authors})
 
     def post(self, request, author_id):
-        get_object_or_404(Author, id=author_id).delete()
+        author = get_object_or_404(Author, id=author_id)
+        author.delete()
+        messages.add_message(request, messages.SUCCESS,
+                             f'{author.name} was removed')
         return redirect('authors')
 
 
@@ -31,13 +35,16 @@ class AuthorDetail(View):
     def post(self, request, author_id=-1):
         if author_id < 0:
             author_form = AuthorForm(data=request.POST)
+            action_message = 'added'
         else:
             author = get_object_or_404(Author, id=author_id)
             author_form = AuthorForm(data=request.POST, instance=author)
+            action_message = 'updated'
 
         if author_form.is_valid():
             author = author_form.save(commit=False)
             author.name = request.POST["name"]
             author.save()
-
+            messages.add_message(request, messages.SUCCESS,
+                                 f'{author.name} was {action_message}')
         return redirect('authors')
