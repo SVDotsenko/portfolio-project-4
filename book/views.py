@@ -13,7 +13,10 @@ class BookList(View):
                       {'books': Book.objects.all().order_by('id')})
 
     def post(self, request, book_id):
-        get_object_or_404(Book, id=book_id).delete()
+        book = get_object_or_404(Book, id=book_id)
+        book.delete()
+        messages.add_message(request, messages.SUCCESS,
+                f'The book "{book.title}" by {book.author.name} was removed')
         return redirect('books')
 
 
@@ -28,16 +31,19 @@ class BookDetail(View):
     def post(self, request, book_id=-1):
         if book_id < 0:
             book_form = BookForm(data=request.POST)
+            action_message = 'added'
         else:
             book = get_object_or_404(Book, id=book_id)
             book_form = BookForm(data=request.POST, instance=book)
+            action_message = 'updated'
 
         if book_form.is_valid():
             book = book_form.save(commit=False)
             book.title = request.POST["title"]
             book.author = Author.objects.filter(id=request.POST["author"])[0]
             book.save()
-
+            messages.add_message(request, messages.SUCCESS,
+            f'The book "{book.title}" by {book.author.name} was {action_message}')
         return redirect('books')
 
 
