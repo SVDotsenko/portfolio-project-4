@@ -3,17 +3,24 @@ const Toast = {
     setToastMessage(message) {
         Array.from(document.getElementsByClassName('toast-body')).forEach(e => e.innerText = message);
     },
+    removePreviousColor() {
+        Array.from(Toast.toast.classList).forEach(className => {
+            if (className.startsWith('text-bg-')) {
+                Toast.toast.classList.remove(className);
+            }
+        });
+    },
     setToastColor: {
         RED() {
-            Toast.toast.classList.remove('text-bg-success', 'text-bg-warning');
+            Toast.removePreviousColor();
             Toast.toast.classList.add('text-bg-danger');
         },
         YELLOW() {
-            Toast.toast.classList.remove('text-bg-success', 'text-bg-danger');
+            Toast.removePreviousColor();
             Toast.toast.classList.add('text-bg-warning');
         },
         GREEN() {
-            Toast.toast.classList.remove('text-bg-danger', 'text-bg-warning');
+            Toast.removePreviousColor();
             Toast.toast.classList.add('text-bg-success');
         }
     },

@@ -83,7 +83,11 @@
             {% endif %}
         </div>
     </nav>
-    {% include "toast.html" %}
+    {% for message in messages %}
+        {% include "toast.html" with message=message %}
+    {% empty %}
+        {% include "toast.html" %}
+    {% endfor %}     
     {% block content %}
     {% endblock content %}
 
