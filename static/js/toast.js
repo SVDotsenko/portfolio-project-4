@@ -1,8 +1,7 @@
 const Toast = {
     toast: document.getElementById('liveToast'),
     setToastMessage(message) {
-        Array.from(document.getElementsByClassName('toast-body'))
-            .forEach(element => element.innerText = message);
+        Array.from(document.getElementsByClassName('toast-body')).forEach(e => e.innerText = message);
     },
     setToastColor: {
         RED() {
@@ -28,7 +27,7 @@ const Toast = {
     },
     init(hideAfterSeconds) {
         document.addEventListener('DOMContentLoaded', () => {
-            if (document.getElementsByClassName('toast-body')[0]?.innerText.trim().length > 0) {
+            if (document.getElementsByClassName('toast-body')[0]?.innerText.trim().length) {
                 this.showToast(hideAfterSeconds);
             }
         });
