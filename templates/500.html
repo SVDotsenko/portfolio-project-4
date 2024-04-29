@@ -8,8 +8,10 @@
         </p>
     </div>>
     <script>
-        Toast.setMessage("You may open browser console now to see that it is real error");
-        Toast.setColor.danger();
-        Toast.show(3);
+        document.addEventListener('DOMContentLoaded', () => {
+            Toast.setMessage("Internal Server Error");
+            Toast.setColor.danger();
+            Toast.show(2);
+        });
     </script>
 {% endblock %}
