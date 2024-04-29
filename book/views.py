@@ -51,10 +51,10 @@ def toggle_reader(request, book_id):
     book = get_object_or_404(Book, id=book_id)
     if book.reader:
         book.reader = None
-        message = 'You returned this book'
+        message = f'You returned the book "{book.title}" by {book.author.name}'
     else:
         book.reader = get_user(request)
-        message = 'You took this book'
+        message = f'You took the book "{book.title}" by {book.author.name}'
     book.save()
     messages.add_message(request, messages.SUCCESS, message)
     return redirect('books')
