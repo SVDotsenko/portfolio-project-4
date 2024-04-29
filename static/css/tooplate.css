@@ -336,6 +336,17 @@ input[type="checkbox"]:focus {
   .tm-block.h-100 {
     padding: 20px;
   }
+
+  .toast-container {
+    max-width: 88%;
+    width: 88%;
+  }
+
+  .toast {
+    min-width: unset;
+    max-width: unset;
+    width: 100%;
+  }
 }
 
 
@@ -346,6 +357,10 @@ input[type="checkbox"]:focus {
 
   .tm-block.h-100 {
     padding: 10px;
+  }
+
+  .toast-container {
+    max-width: 84%;
   }
 }
 
@@ -358,4 +373,11 @@ input[type="checkbox"]:focus {
 
 .btn.btn-link {
   padding: 0 0 3px;
+}
+
+@media (min-width: 481px) {
+  .toast {
+    min-width: 350px;
+    width: fit-content;
+  }
 }
