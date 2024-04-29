@@ -2,5 +2,12 @@
 {% block content %}
     <div class="tm-mt-big bg-white tm-block">
         <h1 class="text-center">Page not found</h1>
-    </div>>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Toast.setMessage("404");
+            Toast.setColor.danger();
+            Toast.show(1);
+        });
+    </script>
 {% endblock %}

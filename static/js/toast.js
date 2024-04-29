@@ -56,6 +56,6 @@ const Toast = {
 document.addEventListener('DOMContentLoaded', () => {
     Toast.toast = document.getElementById('liveToast');
     if (document.getElementsByClassName('toast-body')[0]?.innerText.trim().length) {
-        Toast.show(3, true);
+        Toast.show(4, true);
     }
 });

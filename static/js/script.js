@@ -22,7 +22,7 @@ const previewImage = event => {
 
     Toast.setMessage("To save, click Update button");
     Toast.setColor.warning();
-    Toast.show(1);
+    Toast.show(3);
 
     setTimeout(() => {
         submit.classList.remove('btn-primary');

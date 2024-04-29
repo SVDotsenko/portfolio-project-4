@@ -3,4 +3,11 @@
     <div class="tm-mt-big bg-white tm-block">
         <h1 class="text-center">Forbidden</h1>
     </div>>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Toast.setMessage("403");
+            Toast.setColor.danger();
+            Toast.show(1);
+        });
+    </script>
 {% endblock %}
