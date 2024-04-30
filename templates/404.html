@@ -5,10 +5,11 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const message = "404";
-            const messageTags = "error";
-            const delay = 1;
-            Toast.show({message, messageTags, delay});
+            Toast.params.element = $('#liveToast')[0];
+            Toast.params.message = "404";
+            Toast.params.messageTags = "error";
+            Toast.params.delay = 1;
+            Toast.show();
         });
     </script>
 {% endblock %}

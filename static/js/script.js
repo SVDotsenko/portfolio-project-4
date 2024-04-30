@@ -20,10 +20,10 @@ const previewImage = event => {
 
     const submit = document.getElementById('submit');
 
-    const message = "To save, click Update button";
-    const messageTags = "warning";
-    const delay = 3;
-    Toast.show({message, messageTags, delay});
+    Toast.params.message = "To save, click Update button";
+    Toast.params.messageTags = "warning";
+    Toast.params.delay = 3;
+    Toast.show();
 
     setTimeout(() => {
         submit.classList.remove('btn-primary');

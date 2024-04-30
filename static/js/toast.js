@@ -19,23 +19,22 @@ const Toast = {
         message: newMessage => Toast.setMessage(newMessage)
     },
 
-    setMessage: message => Toast.element.querySelector('.toast-body').innerText = message,
+    setMessage: message => Toast.params.element.querySelector('.toast-body').innerText = message,
 
-    removePreviousColorClass: () => Array.from(Toast.element.classList).forEach(className =>
-        className.startsWith('text-bg-') && Toast.element.classList.remove(className)),
+    removePreviousColorClass: () => Array.from(Toast.params.element.classList).forEach(className =>
+        className.startsWith('text-bg-') && Toast.params.element.classList.remove(className)),
 
     setColor: newClass => {
         Toast.removePreviousColorClass();
-        Toast.element.classList.add(newClass);
+        Toast.params.element.classList.add(newClass);
     },
 
     processParameters: (o, f) => Object.keys(f).forEach(k => f[k](o[k])),
 
-    show: newParams => {
-        Toast.params = {...Toast.params, ...newParams};
+    show: () => {
         Toast.processParameters(Toast.params, Toast.paramsToFunction);
 
-        new bootstrap.Toast(Toast.element, {
+        new bootstrap.Toast(Toast.params.element, {
             animation: true,
             autohide: Toast.params.autoHide,
             delay: Toast.params.delay * 1000
