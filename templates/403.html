@@ -5,9 +5,11 @@
     </div>>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            Toast.setMessage("403");
-            Toast.setColor.danger();
-            Toast.show(1);
+            Toast.setElement($('#liveToast')[0]);
+            const message = "403";
+            const messageTags = "error";
+            const delay = 1;
+            Toast.show({message, messageTags, delay});
         });
     </script>
 {% endblock %}
