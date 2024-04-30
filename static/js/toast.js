@@ -1,49 +1,37 @@
-const Toast = (() => {
-    let params = {
+const Toast = {
+    params: {
         delay: 4,
         autoHide: true,
         messageTags: 'info',
         message: 'Hello, world!'
-    };
-
-    const messageTagsMapping = {
+    },
+    paramToFunction: {
+        messageTags: messageTag => Toast.setColor(Toast.messageTagsMapping[messageTag]),
+        message: newMessage => Toast.setMessage(newMessage)
+    },
+    messageTagsMapping: {
         debug: 'text-bg-secondary',
         info: 'text-bg-info',
         success: 'text-bg-success',
         warning: 'text-bg-warning',
         error: 'text-bg-danger'
-    };
+    },
+    setMessage: message => Toast.params.element.querySelector('.toast-body').innerText = message,
+    removePreviousColorClass: () => Array.from(Toast.params.element.classList).forEach(className =>
+        className.startsWith('text-bg-') && Toast.params.element.classList.remove(className)),
+    setColor: newClass => {
+        Toast.removePreviousColorClass();
+        Toast.params.element.classList.add(newClass);
+    },
+    processParameters: (o, f) => Object.keys(f).forEach(k => f[k](o[k])),
+    show: newParams => {
+        Toast.params = {...Toast.params, ...newParams};
+        Toast.processParameters(Toast.params, Toast.paramToFunction);
 
-    const setMessage = message => params.element.querySelector('.toast-body').innerText = message;
-
-    const removePreviousColorClass = () => {
-        Array.from(params.element.classList).forEach(className =>
-            className.startsWith('text-bg-') && params.element.classList.remove(className)
-        );
-    };
-
-    const setColor = newClass => {
-        removePreviousColorClass();
-        params.element.classList.add(newClass);
-    };
-
-    const paramToFunction = {
-        messageTags: messageTag => setColor(messageTagsMapping[messageTag]),
-        message: newMessage => setMessage(newMessage)
-    };
-
-    const processParameters = (o, f) => Object.keys(f).forEach(k => f[k](o[k]));
-
-    return {
-        show: newParams => {
-            params = {...params, ...newParams};
-            processParameters(params, paramToFunction);
-
-            new bootstrap.Toast(params.element, {
-                animation: true,
-                autohide: params.autoHide,
-                delay: params.delay * 1000
-            }).show();
-        }
-    };
-})();
+        new bootstrap.Toast(Toast.params.element, {
+            animation: true,
+            autohide: Toast.params.autoHide,
+            delay: Toast.params.delay * 1000
+        }).show();
+    }
+};
