@@ -9,11 +9,10 @@
     </div>>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const element = $('#liveToast')[0];
             const message = "500";
             const messageTags = "error";
             const delay = 1;
-            Toast.show({message, messageTags, delay, element});
+            Toast.show({message, messageTags, delay});
         });
     </script>
 {% endblock %}

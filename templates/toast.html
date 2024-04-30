@@ -11,10 +11,10 @@
 <script src="{% static 'js/toast.js' %}" type="text/javascript"></script>
 <script>
     $(document).ready(() => {
-        const element = $('#liveToast')[0];
+        Toast.element = $('#liveToast')[0];
         const messageTags = $('.message-tags').text().trim();
         const message = $('.toast-body').text().trim();
-        messageTags.length && Toast.show({messageTags, message, element});
+        messageTags.length && Toast.show({messageTags, message});
 
 
         $(window).resize(() => {
