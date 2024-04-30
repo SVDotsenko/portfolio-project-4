@@ -14,17 +14,17 @@ const Toast = (() => {
         error: 'text-bg-danger'
     };
 
-    const setMessage = message => Toast.element.querySelector('.toast-body').innerText = message;
+    const setMessage = message => params.element.querySelector('.toast-body').innerText = message;
 
     const removePreviousColorClass = () => {
-        Array.from(Toast.element.classList).forEach(className =>
-            className.startsWith('text-bg-') && Toast.element.classList.remove(className)
+        Array.from(params.element.classList).forEach(className =>
+            className.startsWith('text-bg-') && params.element.classList.remove(className)
         );
     };
 
     const setColor = newClass => {
         removePreviousColorClass();
-        Toast.element.classList.add(newClass);
+        params.element.classList.add(newClass);
     };
 
     const paramToFunction = {
@@ -34,19 +34,16 @@ const Toast = (() => {
 
     const processParameters = (o, f) => Object.keys(f).forEach(k => f[k](o[k]));
 
-    const setElement = element => Toast.element = element;
-
     return {
         show: newParams => {
             params = {...params, ...newParams};
             processParameters(params, paramToFunction);
 
-            new bootstrap.Toast(Toast.element, {
+            new bootstrap.Toast(params.element, {
                 animation: true,
                 autohide: params.autoHide,
                 delay: params.delay * 1000
             }).show();
-        },
-        setElement
+        }
     };
 })();
