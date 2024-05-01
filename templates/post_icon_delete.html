@@ -45,9 +45,6 @@
     </div>
 </div>
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        if (window.innerWidth < 576) {
-            Array.from(document.getElementsByClassName('fa-trash-alt')).forEach(e => e.removeAttribute('data-toggle'));
-        }
-    });
+    $(document).ready(() => window.innerWidth < 576
+        && Array.from(document.getElementsByClassName('fa-trash-alt')).forEach(e => e.removeAttribute('data-toggle')));
 </script>

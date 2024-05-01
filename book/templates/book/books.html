@@ -39,7 +39,7 @@
                                     </i>
                                 {% else %}
                                     <a href="{% url 'update_book' book.id %}" data-toggle="tooltip"
-                                       title="Edit this book" class="me-md-5 me-3 text-decoration-none">
+                                       title="Edit this book" class="me-md-4 me-2 text-decoration-none">
                                         <i class="fas fa-edit icon-color"></i>
                                     </a>
                                     {% include "post_icon_delete.html" with id=book.id url='delete_book' title='Delete this book' icon='fa-trash-alt' book=book %}

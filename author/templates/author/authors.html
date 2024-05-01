@@ -29,7 +29,7 @@
                                 </i>
                             {% else %}
                                 <a href="{% url 'update_author' author.id %}" data-toggle="tooltip"
-                                   title="Edit this author" class="me-md-5 me-3 text-decoration-none">
+                                   title="Edit this author" class="me-md-4 me-2 text-decoration-none">
                                     <i class="fas fa-edit icon-color"></i>
                                 </a>
                                 {% include "post_icon_delete.html" with id=author.id url='delete_author' title='Delete this author' icon='fa-trash-alt' author=author %}
