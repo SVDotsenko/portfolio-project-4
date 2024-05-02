@@ -8,6 +8,9 @@ from book.models import Book
 class TestBookView(TestCase):
 
     def setUp(self):
+        """
+        Set up the necessary objects and data for the test case.
+        """
         self.user = User.objects.create_superuser(
             username="myUsername",
             password="myPassword",
@@ -19,6 +22,9 @@ class TestBookView(TestCase):
         self.book.save()
 
     def test_render_books_page_authorised_user(self):
+        """
+        Test case to verify that the books page is rendered correctly for an authorised user.
+        """
         self.client.login(username='myUsername', password='myPassword')
         response = self.client.get(reverse('books'))
         self.assertEqual(response.status_code, 200)
@@ -26,6 +32,13 @@ class TestBookView(TestCase):
         self.assertIn(b"Add Book", response.content)
 
     def test_successful_book_creation(self):
+        """
+        Test case to verify successful book creation.
+
+        This test logs in a user, creates a book using the 'add_book' view,
+        and then checks if the book count has increased by 1.
+
+        """
         self.client.login(username='myUsername', password='myPassword')
         post_data = {'title': 'Book title2', 'author': self.author.id}
         self.assertEqual(Book.objects.count(), 1)
@@ -33,6 +46,12 @@ class TestBookView(TestCase):
         self.assertEqual(Book.objects.count(), 2)
 
     def test_successful_book_update(self):
+        """
+        Test case to verify successful book update.
+
+        This test case logs in a user, retrieves a book object, updates its title,
+        and verifies that the title has been successfully updated in the database.
+        """
         self.client.login(username='myUsername', password='myPassword')
         new_title = 'Book title2'
         response = self.client.get(reverse('update_book',
@@ -45,6 +64,12 @@ class TestBookView(TestCase):
         self.assertEqual(updated_title, new_title)
 
     def test_successful_book_delete(self):
+        """
+        Test case to verify successful deletion of a book.
+
+        This test logs in a user, creates a book, and then deletes it using the `delete_book` view.
+        It asserts that the book count before and after the deletion is as expected.
+        """
         self.client.login(username='myUsername', password='myPassword')
         self.assertEqual(Book.objects.count(), 1)
         self.client.post(
@@ -52,6 +77,14 @@ class TestBookView(TestCase):
         self.assertEqual(Book.objects.count(), 0)
 
     def test_toggle_reader(self):
+        """
+        Test case for toggling the reader of a book.
+
+        This test checks if the reader of a book can be toggled correctly.
+        It creates a user, logs in as the user, and checks if the initial reader of the book is None.
+        Then it sends a POST request to toggle the reader of the book and checks if the reader is updated correctly.
+        Finally, it sends another POST request to toggle the reader back to None and checks if the reader is set to None again.
+        """
         self.user = User.objects.create_user(
             username="reader",
             password="readerPassword",

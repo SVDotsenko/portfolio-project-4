@@ -1,3 +1,7 @@
+/**
+ * Toast object for displaying toast messages.
+ * @namespace Toast
+ */
 const Toast = {
     messageTagsMapping: {
         debug: 'text-bg-secondary',

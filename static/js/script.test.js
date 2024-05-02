@@ -1,4 +1,5 @@
 /**
+ * @fileoverview Unit tests for script.js
  * @jest-environment jsdom
  */
 

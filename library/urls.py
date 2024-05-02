@@ -20,18 +20,47 @@ urlpatterns = [
 
 
 def custom_permission_denied(request, exception):
+    """
+    Custom view for handling permission denied errors.
+
+    Args:
+        request (HttpRequest): The request object.
+        exception (Exception): The exception that caused the permission denied error.
+
+    Returns:
+        HttpResponse: The response object with the updated template name.
+    """
     response = default_permission_denied(request, exception)
     response.template_name = '403.html'
     return response
 
 
 def custom_page_not_found(request, exception):
+    """
+    Custom handler for page not found (404) errors.
+
+    Args:
+        request (HttpRequest): The HTTP request object.
+        exception (Exception): The exception that triggered the 404 error.
+
+    Returns:
+        HttpResponse: The response with the custom 404 page.
+    """
     response = default_page_not_found(request, exception)
     response.template_name = '404.html'
     return response
 
 
 def custom_server_error(request):
+    """
+    Custom view for handling server errors (500).
+
+    Args:
+        request (HttpRequest): The HTTP request object.
+
+    Returns:
+        HttpResponse: The HTTP response object with the custom error template.
+    """
     response = default_server_error(request)
     response.template_name = '500.html'
     return response

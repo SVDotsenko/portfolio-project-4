@@ -11,6 +11,15 @@ from reader.models import ProfileImage
 
 class ProfileDetail(View):
     def get(self, request):
+        """
+        Handles the GET request for the reader view.
+
+        Args:
+            request (HttpRequest): The HTTP request object.
+
+        Returns:
+            HttpResponse: The HTTP response object containing the rendered template.
+        """
         reader = get_user(request)
         books = Book.objects.filter(reader=reader)
         image = ProfileImage.objects.filter(user=reader)
@@ -20,6 +29,18 @@ class ProfileDetail(View):
         return render(request, "reader/reader.html", context)
 
     def post(self, request):
+        """
+        Handle the POST request for updating user profile.
+
+        Args:
+            request (HttpRequest): The HTTP request object.
+
+        Returns:
+            HttpResponseRedirect: Redirects to the 'books' page.
+
+        Raises:
+            HttpResponseServerError: If 'emulate-error' parameter is present in the request.
+        """
         if request.POST.get('emulate-error'):
             raise HttpResponseServerError()
         if request.FILES.get('fileInput'):
@@ -34,6 +55,15 @@ class ProfileDetail(View):
         return redirect('books')
 
     def save_image(self, request):
+        """
+        Saves the profile image for the user.
+
+        Args:
+            request (HttpRequest): The HTTP request object.
+
+        Returns:
+            None
+        """
         reader = get_user(request)
         image = ProfileImage.objects.filter(user=reader).first()
 

@@ -1,3 +1,12 @@
+/**
+ * @fileoverview Unit tests for the Toast module.
+ * @module ToastTest
+ */
+
+/**
+ * Mock implementation of the Toast class.
+ * @constructor
+ */
 const Toast = require('./toast.js');
 
 function MockToast() {
