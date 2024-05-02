@@ -15,8 +15,7 @@
         Toast.params.messageTags = $('.message-tags').text().trim();
         Toast.params.message = $('.toast-body').text().trim();
         Toast.params.messageTags.length && Toast.show();
-
-
+        
         $(window).resize(() => {
             $(window).width() > 480
                 ? $('.toast-container').addClass('start-50 translate-middle-x')

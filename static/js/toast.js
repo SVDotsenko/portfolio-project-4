@@ -41,3 +41,5 @@ const Toast = {
         }).show();
     }
 };
+
+(typeof module !== 'undefined' && module.exports) && (module.exports = Toast);

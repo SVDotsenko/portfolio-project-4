@@ -46,5 +46,6 @@
 </div>
 <script>
     $(document).ready(() => window.innerWidth < 576
-        && Array.from(document.getElementsByClassName('fa-trash-alt')).forEach(e => e.removeAttribute('data-toggle')));
+        && Array.from(document.getElementsByClassName('fa-trash-alt'))
+        .forEach(e => e.removeAttribute('data-toggle')));
 </script>

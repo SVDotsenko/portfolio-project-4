@@ -3,12 +3,12 @@ const validateInput = () => {
     const button = document.getElementById('submit');
     setTimeout(() => input.classList.remove('is-invalid', 'is-valid'), 3000);
     if (/[a-zA-Z]/.test(input.value)) {
-        input.classList.add('is-valid');
         input.classList.remove('is-invalid');
+        input.classList.add('is-valid');
         button.disabled = false;
     } else {
-        input.classList.add('is-invalid');
         input.classList.remove('is-valid');
+        input.classList.add('is-invalid');
         button.disabled = true;
     }
 }
@@ -32,6 +32,4 @@ const previewImage = event => {
     }, 3500);
 }
 
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = {validateInput, previewImage};
-}
+(typeof module !== 'undefined' && module.exports) && (module.exports = {validateInput, previewImage});

@@ -10,6 +10,10 @@ global.FileReader = jest.fn(() => ({
     onload: null,
 }));
 
+global.Toast = {
+    params: {},
+    show: jest.fn(),
+};
 
 describe('validateInput', () => {
     test('should validate input correctly', () => {
@@ -48,8 +52,11 @@ describe('validateInput', () => {
     });
 });
 
+
+jest.useFakeTimers();
+
 describe('previewImage', () => {
-    test('should preview image correctly', done => {
+    test('should preview image correctly', () => {
 
         const mockEvent = {
             target: {
@@ -66,10 +73,9 @@ describe('previewImage', () => {
         document.getElementById.mockReturnValueOnce(mockSubmit);
         previewImage(mockEvent);
         expect(FileReader).toHaveBeenCalled();
-        setTimeout(() => {
-            expect(mockSubmit.classList.add).toHaveBeenCalledWith('btn-warning');
-            expect(mockSubmit.classList.remove).toHaveBeenCalledWith('btn-primary');
-            done();
-        }, 1000);
+        jest.runAllTimers();
+
+        expect(mockSubmit.classList.add).toHaveBeenCalledWith('btn-warning');
+        expect(mockSubmit.classList.remove).toHaveBeenCalledWith('btn-primary');
     });
 });
