@@ -1,0 +1,13 @@
+{
+  "esversion": 6,
+  "undef": true,
+  "unused": true,
+  "eqeqeq": true,
+  "browser": true,
+  "node": true,
+  "expr": true,
+  "globals": {
+    "$": true,
+    "jQuery": true
+  }
+}

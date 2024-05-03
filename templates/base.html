@@ -41,31 +41,32 @@
             {% if user.is_anonymous %}
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == signup_url %}active{% endif %}"
+                        <a class="nav-link {% if request.path == signup_url %}active" aria-current="page{% endif %}"
                            href="{% url 'account_signup' %}"> Register </a>
                     </li>
-                    <li class="nav-item {% if request.path == login_url %}active{% endif %}">
-                        <a class="nav-link" href="{% url 'account_login' %}"> Login </a>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == login_url %}active" aria-current="page{% endif %}"
+                           href="{% url 'account_login' %}"> Login </a>
                     </li>
                 </ul>
             {% else %}
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == books_url %}active{% endif %}"
+                        <a class="nav-link {% if request.path == books_url %}active" aria-current="page{% endif %}"
                            href="{% url 'books' %}">
                             Books
                         </a>
                     </li>
                     {% if user.is_superuser %}
                         <li class="nav-item">
-                            <a class="nav-link {% if request.path == authors_url %}active{% endif %}"
+                            <a class="nav-link {% if request.path == authors_url %}active" aria-current="page{% endif %}"
                                href="{% url 'authors' %}"> Authors
                             </a>
                         </li>
                     {% endif %}
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == profile_url %}active{% endif %}" data-toggle="tooltip"
-                           title="{{ user.username }}"
+                        <a class="nav-link {% if request.path == profile_url %}active" aria-current="page{% endif %}"
+                           data-toggle="tooltip" title="{{ user.username }}"
                            href="{% url 'profile' %}"> My Profile
                         </a>
                     </li>
@@ -73,7 +74,7 @@
 
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link d-flex {% if request.path == logout_url %}active{% endif %}"
+                        <a class="nav-link d-flex {% if request.path == logout_url %}active" aria-current="page{% endif %}"
                            href="{% url 'account_logout' %}" data-toggle="tooltip" title="{{ user.username }}">
                             <i class="far fa-user tm-logout-icon"></i>
                             <span>Logout</span>
