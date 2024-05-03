@@ -216,8 +216,8 @@ All additional features and functionality not explicitly mentioned in this secti
 
 The entire project is covered by unit tests. Test coverage reports can be viewed in the following links:
 
-- [Django Test Coverage Report](./htmlcov/index.html)
-- [JavaScript Test Coverage Report](./coverage/lcov-report/index.html)
+- [Django Test Coverage Report](https://rawcdn.githack.com/SVDotsenko/portfolio-project-4/20c02cf93a5fa3bbd519a32113ff36d5a83297ad/htmlcov/index.html)
+- [JavaScript Test Coverage Report](https://rawcdn.githack.com/SVDotsenko/portfolio-project-4/20c02cf93a5fa3bbd519a32113ff36d5a83297ad/coverage/lcov-report/index.html)
 
 Please note that you can open these links in a new tab using the context menu in your browser (usually right-click on the link and select "Open link in new tab").
 
