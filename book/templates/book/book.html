@@ -26,6 +26,7 @@
             <div class="input-group mb-4">
                 <label for="author" class="sr-only">Author</label>
                 <select class="custom-select form-select" id="author" name="author" required>
+                    <option value="">Choose the Author</option>
                     {% for author in object_list %}
                         {% if book %}
                             <option value="{{ author.id }}"
