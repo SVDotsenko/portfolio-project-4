@@ -1,10 +1,7 @@
-добавить описания ко всем методам и классам
-прогнать код через валидаторы
-
-сделать диаграмму моделей и их связей, проверить в требованиях, обязательно ли это
-писать остальные разделы этого файла
 расписать стори на гитхабе
-
+check the project again, that it meets all requiments
+write a clime for bcc
+proxy
 
 # E-Library
 
@@ -36,9 +33,47 @@ The application's user interface is designed to be intuitive and user-friendly, 
 
 ![Responsive design](static/img/readme/desktop.png)
 
+ 
+## The application implements the following features:
 
-## Features 
+- Access to the application is only possible through a login and password.
+- The application has 2 user roles: Reader and Administrator.
+- Registration of a new user (with the role of Reader) through the user interface.
 
+Common functionality for both roles includes:
+
+- Logging into the application through a login form.
+- Viewing all books in the library.
+- Editing information in the profile about the current user logged into the system, including changing the photo.
+- If the user will try to access the route that is not exist, the user will be redirected to the 404 page.
+- There are tooltips for all interactive elements in the application which provide additional information about the 
+  action that will be performed after clicking on the element.
+- There are toasts for all create, update and delete operations which provide current user details about 
+  what he\she has just done.
+- All input fields in this application are mandatory and have a validation on the client side.
+
+Reader functionality:
+
+- Borrowing books from the library.
+- Returning books to the library.
+- Seeing books that are unavailable and who is reading them.
+- Does not have access to the authors' page, if the user tries to access this page, the user will be redirected to the 403 page.
+- On the profile page, view the books that the reader is currently reading.
+- I also implemented a special error handling for 500 error, which is simulated on the server side. To see it, you 
+  need to check checkbox on profile page.
+
+Administrator functionality:
+
+- Adding new book authors.
+- Editing book authors.
+- For Adding and Editing book authors operations, implemented complex validations on client and server sides.
+  - Client side: the input field cannot be empty and should be at least 1 character long.
+  - Server side: Each letter must be capital.
+- Deleting book authors.
+- Adding new books.
+- Editing existing books.
+- Deleting existing books.
+- If a book is already being read by someone, such a book cannot be edited and the author of such a book also cannot be edited. The book must be returned by the reader before it can be edited or deleted.
 
 ### Existing Features
 
@@ -115,17 +150,89 @@ The application's user interface is designed to be intuitive and user-friendly, 
 - Use ajax to avoid page reloading.
 - Returning a book from the profile page.
 
-## Testing
+## Data model
 
-In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your project’s features and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
+1. **User Model**: This is a built-in Django model that represents the users of your application. It includes fields for username, password, email, first name, and last name. The User model is used for authentication and authorization in the Django framework.
+
+2. **ProfileImage Model**: This model is related to the User model with a one-to-one relationship. It represents the profile image of a user. It includes the following fields:
+    - `user`: A one-to-one field linking to the User model. When a User instance is deleted, the associated ProfileImage instance will also be deleted.
+    - `image`: A field that stores the image of the user's profile. It uses the Cloudinary service for image hosting.
+
+3. **Author Model**: This model represents the authors of the books in your application. It includes the following field:
+    - `name`: A character field with a maximum length of 200 characters that stores the name of the author.
+
+4. **Book Model**: This model represents the books in your application. It includes the following fields:
+    - `title`: A character field with a maximum length of 200 characters that stores the title of the book.
+    - `author`: A foreign key field linking to the Author model. When an Author instance is deleted, the associated Book instances will not be deleted but the `author` field will be set to NULL.
+    - `reader`: A foreign key field linking to the User model. It represents the user who is currently reading the book. When a User instance is deleted, the `reader` field in the associated Book instances will be set to NULL.
+
+The User model handles user authentication, the ProfileImage model handles user profile images, the Author model represents book authors, and the Book model represents the books in application and their current reader.
+
+## Manual Testing
+
+### Testing Login Functionality
+
+1. **Testing login with correct credentials**
+    - Navigate to the login page.
+    - Enter the correct username and password.
+    - Click the "Login" button.
+    - Verify that you are redirected to the main page of the application.
+
+2. **Testing login with incorrect credentials**
+    - Navigate to the login page.
+    - Enter incorrect username and password.
+    - Click the "Login" button.
+    - Verify that an error message is displayed.
+
+### Testing Registration Functionality
+
+1. **Testing registration with correct data**
+    - Navigate to the registration page.
+    - Enter correct data into all form fields.
+    - Click the "Register" button.
+    - Verify that you are redirected to the login page with a successful registration message.
+
+2. **Testing registration with incorrect data**
+    - Navigate to the registration page.
+    - Enter incorrect data into one or more form fields.
+    - Click the "Register" button.
+    - Verify that an error message is displayed.
+
+### Testing Book Viewing Functionality
+
+1. **Testing viewing the list of books**
+    - Navigate to the books page.
+    - Verify that a list of all books is displayed.
+
+2. **Testing viewing book details**
+    - Navigate to the books page.
+    - Click on one of the books.
+    - Verify that a page with details of the selected book is displayed.
+
+
+All additional features and functionality not explicitly mentioned in this section have also been thoroughly tested and are confirmed to be working correctly.
+
+## Automation Testing
+
+The entire project is covered by unit tests. Test coverage reports can be viewed in the following links:
+
+- [Django Test Coverage Report](./htmlcov/index.html)
+- [JavaScript Test Coverage Report](./coverage/lcov-report/index.html)
+
+Please note that you can open these links in a new tab using the context menu in your browser (usually right-click on the link and select "Open link in new tab").
+
+You may run unit tests locally by following the instructions in the [Testing](#testing) section.
 
 
 ### Validator Testing
 
 - HTML
-    - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcode-institute-org.github.io%2Flove-running-2.0%2Findex.html)
+    - All errors found by official W3C validator were fixed in separate commits.
 - CSS
-
+    - No errors were found when passing through the official (Jigsaw) validator
+- JSHint
+    - No errors were found when passing through the JSHint validator according to settings in .jshintrc file.
+      https://youtu.be/9F0BpXzsh3Y?si=rQwAtaFJ8SAJBOni&t=459 continue from here
 
 ### Unfixed Bugs
 
