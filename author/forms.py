@@ -12,7 +12,6 @@ class AuthorFormInput(forms.Form):
     name = forms.CharField(
         widget=forms.TextInput(attrs={
             'id': 'name',
-            'name': 'name',
             'oninput': 'validateInput()',
             'class': 'form-control',
             'placeholder': 'Author name',
