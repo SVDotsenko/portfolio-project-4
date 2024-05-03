@@ -216,8 +216,8 @@ All additional features and functionality not explicitly mentioned in this secti
 
 The entire project is covered by unit tests. Test coverage reports can be viewed in the following links:
 
-- [Django Test Coverage Report](https://rawcdn.githack.com/SVDotsenko/portfolio-project-4/20c02cf93a5fa3bbd519a32113ff36d5a83297ad/htmlcov/index.html)
-- [JavaScript Test Coverage Report](https://rawcdn.githack.com/SVDotsenko/portfolio-project-4/20c02cf93a5fa3bbd519a32113ff36d5a83297ad/coverage/lcov-report/index.html)
+- [Django Test Coverage Report](https://rawcdn.githack.com/SVDotsenko/portfolio-project-4/14745f5df8db225593372da6683331b4709eae18/htmlcov/index.html)
+- [JavaScript Test Coverage Report](https://rawcdn.githack.com/SVDotsenko/portfolio-project-4/14745f5df8db225593372da6683331b4709eae18/coverage/lcov-report/index.html)
 
 Please note that you can open these links in a new tab using the context menu in your browser (usually right-click on the link and select "Open link in new tab").
 
@@ -249,3 +249,6 @@ This section should describe the process you went through to deploy the project 
 
 In this section you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism.
 http://www.tooplate.com/view/2108-dashboard
+https://raw.githack.com/
+https://github.com/SVDotsenko/portfolio-project-4/blob/master/htmlcov/index.html
+https://github.com/SVDotsenko/portfolio-project-4/blob/master/coverage/lcov-report/index.html
