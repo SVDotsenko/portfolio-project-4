@@ -12,3 +12,6 @@ echo -e "\033[41;37mRunning unit tests for JavaScript\033[0m"
 rm -rf coverage
 npm run test
 start coverage/lcov-report/index.html
+
+cd htmlcov
+rm .gitignore

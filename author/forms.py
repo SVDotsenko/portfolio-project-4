@@ -3,12 +3,25 @@ from author.models import Author
 
 
 class AuthorForm(forms.ModelForm):
+    """
+    A form for creating or updating an Author instance.
+    """
     class Meta:
+        """
+        The Meta class provides metadata for the Author form.
+        It specifies the model to be used and the fields to be included in the form.
+        """
         model = Author
         fields = ('name',)
 
 
 class AuthorFormInput(forms.Form):
+    """
+    A form for inputting author information.
+
+    Attributes:
+        name (CharField): The name of the author.
+    """
     name = forms.CharField(
         widget=forms.TextInput(attrs={
             'id': 'name',
