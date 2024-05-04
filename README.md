@@ -1,8 +1,3 @@
-расписать стори на гитхабе
-check the project again, that it meets all requiments
-write a clime for bcc
-proxy
-
 # E-Library
 
 ---
@@ -168,6 +163,63 @@ Administrator functionality:
 
 The User model handles user authentication, the ProfileImage model handles user profile images, the Author model represents book authors, and the Book model represents the books in application and their current reader.
 
+
+## Technologies Used
+
+### Languages Used
+
+-   [HTML5](https://en.wikipedia.org/wiki/HTML5)
+-   [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
+-   [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
+-   [Python](https://www.python.org/)
+
+### Frameworks, Libraries & Programs Used
+
+**Front-end:**
+1. [Google Fonts:](https://fonts.google.com)
+    - Google fonts were used to import the 'Open Sans' font into the style.css file which is used on all pages throughout the project.
+2. [Font Awesome:](https://fontawesome.com)
+    - Font Awesome was used on all pages throughout the website to add icons for aesthetic and UX purposes.
+3. [Bootstrap:](https://getbootstrap.com/docs/5.3/getting-started/introduction)
+    - Bootstrap was used to assist with the responsiveness and styling of the website.
+4. [jQuery:](https://jquery.com)
+    - jQuery came with Bootstrap to make the navbar responsive but was also used to show tooltips.
+
+**Back-end:**
+1. [Django:](https://www.djangoproject.com)
+    - Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design.
+2. [ElephantSQL:](https://www.elephantsql.com)
+    - ElephantSQL was used to store data.
+3. [Cloudinary:](https://cloudinary.com)
+    - Cloudinary was used to store images.
+
+**Testing and Quality Control:**
+1. [JSHint:](https://jshint.com)
+    - JSHint was [used](.jshintrc) to check the quality of JavaScript code.
+2. [Jest:](https://jestjs.io)
+    - Jest was [used](package.json) for writing unit-test for JavaScript part of this Project.
+3. [Coverage:](https://coverage.readthedocs.io)
+    - Coverage was [used](requirements.txt) to measure code coverage of Python code.
+
+**Version Control and Deployment:**
+1. [Git:](https://git-scm.com)
+    - Git was used for version control to commit and Push code to GitHub.
+2. [GitHub:](https://github.com)
+    - GitHub was used to store the projects code after being pushed from Git.
+3. [Heroku:](https://www.heroku.com)
+    - Heroku was used to deploy the project.
+
+**Automation:**
+1. [Bash:](https://www.gnu.org/software/bash/manual)
+    - Bash was [used](coverage.sh) to automate running Test Coverage reports.
+
+**Auxiliary Tools:**
+1. [GitHack:](https://raw.githack.com)
+    - GitHack was used to render Code coverage reports.
+
+
+
+
 ## Manual Testing
 
 ### Testing Login Functionality
@@ -227,30 +279,29 @@ You may run unit tests locally by following the instructions in the [Testing](#t
 ### Validator Testing
 
 - HTML
-    - All errors found by official W3C validator were fixed in separate commits.
+    - All errors found by official W3C validator were fixed in separate [commit](https://github.com/SVDotsenko/portfolio-project-4/commit/b4cffffd38b8bc78106bc701044a4a9a3f8800b1).
 - CSS
     - No errors were found when passing through the official (Jigsaw) validator
-- JSHint
+- JavaScript
     - No errors were found when passing through the JSHint validator according to settings in .jshintrc file.
-      https://youtu.be/9F0BpXzsh3Y?si=rQwAtaFJ8SAJBOni&t=459 continue from here
-- PEP8
-    - All errors found by [CI Python Linter](https://pep8ci.herokuapp.com) were fixed in separate commit.
+- Python
+    - All errors found by [CI Python Linter](https://pep8ci.herokuapp.com) were fixed in separate [commit](https://github.com/SVDotsenko/portfolio-project-4/commit/0379719df6edc0210029873d157f4d71d41e60da).
   
 ### Unfixed Bugs
 
-- баг с модальным окном навбар увеличивается
-- могут быть неиспользуемые цсс-классы
-
+- Due to the fact that as an initial template I took an open source template and modified it, there may be unused 
+  classes in HTML and CSS
 
 ## Deployment
 
 This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub)
 
-
 ## Credits
+I adopted this [template](http://www.tooplate.com/view/2108-dashboard) for my project.
 
-In this section you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism.
-http://www.tooplate.com/view/2108-dashboard
-https://raw.githack.com/
 https://github.com/SVDotsenko/portfolio-project-4/blob/master/htmlcov/index.html
 https://github.com/SVDotsenko/portfolio-project-4/blob/master/coverage/lcov-report/index.html
+
+расписать стори на гитхабе
+check the project again, that it meets all requiments
+write a clime for bcc
