@@ -15,8 +15,10 @@ class ProfileImageForm(forms.ModelForm):
     """
     class Meta:
         """
-        The Meta class provides additional information about the ModelForm class.
-        It specifies the model to be used and the fields to be included in the form.
+        The Meta class provides additional information about the ModelForm
+        class.
+        It specifies the model to be used and the fields to be included in the
+        form.
         """
 
         model = ProfileImage

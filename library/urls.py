@@ -41,7 +41,8 @@ def custom_permission_denied(request, exception):
 
     Args:
         request (HttpRequest): The request object.
-        exception (Exception): The exception that caused the permission denied error.
+        exception (Exception): The exception that caused the permission denied
+        error.
 
     Returns:
         HttpResponse: The response object with the updated template name.

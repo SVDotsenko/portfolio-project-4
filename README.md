@@ -46,9 +46,9 @@ Common functionality for both roles includes:
 - Viewing all books in the library.
 - Editing information in the profile about the current user logged into the system, including changing the photo.
 - If the user will try to access the route that is not exist, the user will be redirected to the 404 page.
-- There are tooltips for all interactive elements in the application which provide additional information about the 
+- There are [tooltips](https://getbootstrap.com/docs/5.3/components/tooltips) for all interactive elements in the application which provide additional information about the 
   action that will be performed after clicking on the element.
-- There are toasts for all create, update and delete operations which provide current user details about 
+- There are [toasts](https://getbootstrap.com/docs/5.3/components/toasts) for all create, update and delete operations which provide current user details about 
   what he\she has just done.
 - All input fields in this application are mandatory and have a validation on the client side.
 
@@ -216,8 +216,8 @@ All additional features and functionality not explicitly mentioned in this secti
 
 The entire project is covered by unit tests. Test coverage reports can be viewed in the following links:
 
-- [Django Test Coverage Report](https://rawcdn.githack.com/SVDotsenko/portfolio-project-4/14745f5df8db225593372da6683331b4709eae18/htmlcov/index.html)
-- [JavaScript Test Coverage Report](https://rawcdn.githack.com/SVDotsenko/portfolio-project-4/14745f5df8db225593372da6683331b4709eae18/coverage/lcov-report/index.html)
+- [Django Test Coverage Report](https://raw.githack.com/SVDotsenko/portfolio-project-4/master/htmlcov/index.html)
+- [JavaScript Test Coverage Report](https://raw.githack.com/SVDotsenko/portfolio-project-4/master/coverage/lcov-report/index.html)
 
 Please note that you can open these links in a new tab using the context menu in your browser (usually right-click on the link and select "Open link in new tab").
 
@@ -233,7 +233,9 @@ You may run unit tests locally by following the instructions in the [Testing](#t
 - JSHint
     - No errors were found when passing through the JSHint validator according to settings in .jshintrc file.
       https://youtu.be/9F0BpXzsh3Y?si=rQwAtaFJ8SAJBOni&t=459 continue from here
-
+- PEP8
+    - All errors found by [CI Python Linter](https://pep8ci.herokuapp.com) were fixed in separate commit.
+  
 ### Unfixed Bugs
 
 - баг с модальным окном навбар увеличивается

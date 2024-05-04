@@ -18,7 +18,8 @@ class ProfileDetail(View):
             request (HttpRequest): The HTTP request object.
 
         Returns:
-            HttpResponse: The HTTP response object containing the rendered template.
+            HttpResponse: The HTTP response object containing the rendered
+            template.
         """
         reader = get_user(request)
         books = Book.objects.filter(reader=reader)
@@ -39,7 +40,8 @@ class ProfileDetail(View):
             HttpResponseRedirect: Redirects to the 'books' page.
 
         Raises:
-            HttpResponseServerError: If 'emulate-error' parameter is present in the request.
+            HttpResponseServerError: If 'emulate-error' parameter is present
+            in the request.
         """
         if request.POST.get('emulate-error'):
             raise HttpResponseServerError()

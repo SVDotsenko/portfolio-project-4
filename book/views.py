@@ -16,7 +16,7 @@ class BookList(View):
             request (HttpRequest): The HTTP request object.
 
         Returns:
-            HttpResponse: The HTTP response object containing the rendered template.
+       HttpResponse: The HTTP response object containing the rendered template.
         """
         return render(request, "book/books.html",
                       {'books': Book.objects.all().order_by('id')})
@@ -38,7 +38,8 @@ class BookList(View):
         book = get_object_or_404(Book, id=book_id)
         book.delete()
         messages.add_message(request, messages.SUCCESS,
-                f'The book "{book.title}" by {book.author.name} was removed')
+                             f'The book "{book.title}" by {book.author.name} '
+                             f'was removed')
         return redirect('books')
 
 
@@ -66,7 +67,8 @@ class BookDetail(View):
 
         Args:
             request (HttpRequest): The HTTP request object.
-            book_id (int, optional): The ID of the book to be updated. Defaults to -1.
+            book_id (int, optional): The ID of the book to be updated.
+            Defaults to -1.
 
         Returns:
             HttpResponseRedirect: A redirect response to the 'books' URL.
@@ -86,7 +88,9 @@ class BookDetail(View):
             book.author = Author.objects.filter(id=request.POST["author"])[0]
             book.save()
             messages.add_message(request, messages.SUCCESS,
-            f'The book "{book.title}" by {book.author.name} was {action_message}')
+                                 f'The book "{book.title}" by '
+                                 f'{book.author.name} was '
+                                 f'{action_message}')
         return redirect('books')
 
 

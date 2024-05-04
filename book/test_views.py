@@ -23,7 +23,8 @@ class TestBookView(TestCase):
 
     def test_render_books_page_authorised_user(self):
         """
-        Test case to verify that the books page is rendered correctly for an authorised user.
+        Test case to verify that the books page is rendered correctly for an
+        authorised user.
         """
         self.client.login(username='myUsername', password='myPassword')
         response = self.client.get(reverse('books'))
@@ -49,8 +50,9 @@ class TestBookView(TestCase):
         """
         Test case to verify successful book update.
 
-        This test case logs in a user, retrieves a book object, updates its title,
-        and verifies that the title has been successfully updated in the database.
+        This test case logs in a user, retrieves a book object, updates its
+        title, and verifies that the title has been successfully updated in the
+        database.
         """
         self.client.login(username='myUsername', password='myPassword')
         new_title = 'Book title2'
@@ -67,8 +69,10 @@ class TestBookView(TestCase):
         """
         Test case to verify successful deletion of a book.
 
-        This test logs in a user, creates a book, and then deletes it using the `delete_book` view.
-        It asserts that the book count before and after the deletion is as expected.
+        This test logs in a user, creates a book, and then deletes it using the
+        `delete_book` view.
+        It asserts that the book count before and after the deletion is as
+        expected.
         """
         self.client.login(username='myUsername', password='myPassword')
         self.assertEqual(Book.objects.count(), 1)
@@ -81,9 +85,12 @@ class TestBookView(TestCase):
         Test case for toggling the reader of a book.
 
         This test checks if the reader of a book can be toggled correctly.
-        It creates a user, logs in as the user, and checks if the initial reader of the book is None.
-        Then it sends a POST request to toggle the reader of the book and checks if the reader is updated correctly.
-        Finally, it sends another POST request to toggle the reader back to None and checks if the reader is set to None again.
+        It creates a user, logs in as the user, and checks if the initial
+        reader of the book is None.
+        Then it sends a POST request to toggle the reader of the book and
+        checks if the reader is updated correctly.
+        Finally, it sends another POST request to toggle the reader back to
+        None and checks if the reader is set to None again.
         """
         self.user = User.objects.create_user(
             username="reader",

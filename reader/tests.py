@@ -15,8 +15,9 @@ class TestProfileDetail(TestCase):
         """
         Set up the test environment by creating a user object.
 
-        This method is executed before each test case to ensure a clean and consistent state for testing.
-        It creates a user object with a specified username, password, and email.
+        This method is executed before each test case to ensure a clean and
+        consistent state for testing.
+        It creates a user object with a specified username, password and email.
 
         Args:
             None
@@ -32,7 +33,8 @@ class TestProfileDetail(TestCase):
 
     def test_render_profile_page_authorised_user(self):
         """
-        Test case to verify that the profile page is rendered correctly for an authorised user.
+        Test case to verify that the profile page is rendered correctly for an
+        authorised user.
         """
         self.client.login(username='myUsername', password='myPassword')
         response = self.client.get(reverse('profile'))
@@ -42,7 +44,8 @@ class TestProfileDetail(TestCase):
 
     def test_render_profile_page_unauthorised_user(self):
         """
-        Test case to verify that an unauthorised user is redirected to the login page when accessing the profile page.
+        Test case to verify that an unauthorised user is redirected to the
+        login page when accessing the profile page.
         """
         self.assertEqual(self.client.get(reverse('profile')).status_code, 302)
 
@@ -50,10 +53,11 @@ class TestProfileDetail(TestCase):
         """
         Test case to verify successful profile update.
 
-        This test case logs in a user, updates their profile information including first name,
-        last name, email, and profile image. It then asserts that the updated user object
-        has the correct values for first name, last name, and email. It also checks that
-        the profile image has been successfully updated.
+        This test case logs in a user, updates their profile information
+        including first name, last name, email, and profile image. It then
+        asserts that the updated user object has the correct values for first
+        name, last name, and email. It also checks that the profile image has
+        been successfully updated.
 
         Returns:
             None

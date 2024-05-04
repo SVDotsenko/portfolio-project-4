@@ -9,7 +9,8 @@ class AuthorForm(forms.ModelForm):
     class Meta:
         """
         The Meta class provides metadata for the Author form.
-        It specifies the model to be used and the fields to be included in the form.
+        It specifies the model to be used and the fields to be included in the
+        form.
         """
         model = Author
         fields = ('name',)
