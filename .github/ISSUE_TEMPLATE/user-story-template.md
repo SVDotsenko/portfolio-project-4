@@ -1,7 +1,7 @@
 ---
-name: User story template
-about: Custom template for project user stories
-title: ''
+name: User story
+about: default user story template
+title: 'USER STORY: '
 labels: ''
 assignees: SVDotsenko
 

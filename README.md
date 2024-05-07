@@ -178,13 +178,13 @@ The User model handles user authentication, the ProfileImage model handles user 
 - [HTML5](https://en.wikipedia.org/wiki/HTML5)
 - [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
 - [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
-- [Python 3.11.5](https://www.python.org/)
+- [Python 3.9.19](https://www.python.org/)
 
 ### Frameworks, Libraries & Programs Used
 
 1. [Google Fonts:](https://fonts.google.com)
    - Google fonts were used to import the 'Open Sans' font into the style.css file which is used on all pages throughout the project.
-1. [Font Awesome:](https://fontawesome.com)
+1. [Font Awesome 6.5.2:](https://fontawesome.com)
    - Font Awesome was used on all pages throughout the website to add icons for aesthetic and UX purposes.
 1. [Bootstrap 5.3.3:](https://getbootstrap.com/docs/5.3/getting-started/introduction)
    - Bootstrap was used to assist with the responsiveness and styling of the website.
@@ -341,7 +341,7 @@ To create models on ElephantSQL you need to do the following steps:
    git clone https://github.com/SVDotsenko/portfolio-project-4.git
    ```
 2. Follow the instruction in [env.md](env.md) file.
-3. On your local machine, must be installed Python 3.11.5.
+3. On your local machine, must be installed Python 3.9.19 or higher.
 4. Install all dependencies from the requirements.txt file by running this command in your terminal:
    ```bash
    pip install -r requirements.txt

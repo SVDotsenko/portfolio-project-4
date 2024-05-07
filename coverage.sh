@@ -13,5 +13,5 @@ rm -rf coverage
 npm run test
 start coverage/lcov-report/index.html
 
-cd htmlcov
+cd htmlcov || exit
 rm .gitignore
