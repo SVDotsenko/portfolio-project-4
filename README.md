@@ -409,4 +409,4 @@ To run unit tests locally and see coverage reports, you need:
 
 ## Credits
 
-I adopted this [template](http://www.tooplate.com/view/2108-dashboard) for my project.
+This [template](http://www.tooplate.com/view/2108-dashboard) was adopted for the project.
