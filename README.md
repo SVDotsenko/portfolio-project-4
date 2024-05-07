@@ -151,6 +151,10 @@ Administrator functionality:
 - Use ajax to avoid page reloading.
 - Returning a book from the profile page.
 
+## GitHub Project Board
+
+The project was managed using a [GitHub Project Board](https://github.com/users/SVDotsenko/projects/4)
+
 ## Data model
 
 1. **User Model**: This is a built-in Django model that represents the users of your application. It includes fields for username, password, email, first name, and last name. The User model is used for authentication and authorization in the Django framework.
