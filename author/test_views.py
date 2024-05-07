@@ -8,6 +8,10 @@ from author.models import Author
 class TestAuthorView(TestCase):
 
     def setUp(self):
+        """
+        Set up the test environment by creating a superuser,
+        an author, and saving the author.
+        """
         self.user = User.objects.create_superuser(
             username="myUsername",
             password="myPassword",
@@ -17,6 +21,10 @@ class TestAuthorView(TestCase):
         self.author.save()
 
     def test_render_authors_page_authorised_user_admin(self):
+        """
+        Test case to verify that the authors page is rendered correctly for
+        an authorised user with admin privileges.
+        """
         self.client.login(username='myUsername', password='myPassword')
         response = self.client.get(reverse('authors'))
         self.assertEqual(response.status_code, 200)
@@ -24,6 +32,10 @@ class TestAuthorView(TestCase):
         self.assertIn(b"Add Author", response.content)
 
     def test_render_authors_page_authorised_user_not_admin(self):
+        """
+        Test case to verify that an authorized user who is not an admin
+        receives a 403 Forbidden response when accessing the authors page.
+        """
         self.user = User.objects.create_user(
             username='reader',
             password='readerPassword',
@@ -34,10 +46,15 @@ class TestAuthorView(TestCase):
         self.assertIn('403', response.url)
 
     def test_render_authors_page_unauthorised_user(self):
+        """
+        Test case to verify that an unauthorised user is redirected to
+        the login page when trying to access the authors page.
+        """
         response = self.client.get(reverse('authors'))
         self.assertEqual(response.status_code, 302)
 
     def test_successful_author_creation(self):
+        """Test case to verify successful creation of an author."""
         self.client.login(username='myUsername', password='myPassword')
         post_data = {'name': 'Test Author2'}
         self.assertEqual(Author.objects.count(), 1)
@@ -45,6 +62,7 @@ class TestAuthorView(TestCase):
         self.assertEqual(Author.objects.count(), 2)
 
     def test_successful_author_update(self):
+        """Test case to verify successful author update."""
         self.client.login(username='myUsername', password='myPassword')
         new_name = 'William Shakespeare'
         response = self.client.get(reverse('update_author', kwargs={
@@ -59,6 +77,7 @@ class TestAuthorView(TestCase):
         self.assertEqual(updated_name, new_name)
 
     def test_successful_author_delete(self):
+        """Test case to verify successful deletion of an author."""
         self.client.login(username='myUsername', password='myPassword')
         self.assertEqual(Author.objects.count(), 1)
         self.client.post(

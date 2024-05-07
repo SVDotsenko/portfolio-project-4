@@ -33,12 +33,17 @@ class TestAddAuthorForm(TestCase):
 class TestAuthorFormInput(TestCase):
 
     def test_valid_first_second_name(self):
+        """Test case to verify if the first and second name are valid."""
         name = "William Shakespeare"
         form = AuthorFormInput(data={'name': name})
         pattern = form.fields['name'].widget.attrs['pattern']
         self.assertTrue(re.match(pattern, name))
 
     def test_invalid_first_name(self):
+        """
+        Test case to verify if an invalid first name is rejected
+        by the AuthorFormInput.
+        """
         name = "william Shakespeare"
         form = AuthorFormInput(data={'name': name})
         pattern = form.fields['name'].widget.attrs['pattern']
@@ -52,6 +57,7 @@ class TestAuthorFormInput(TestCase):
         self.assertFalse(re.match(pattern, name))
 
     def test_empty_name(self):
+        """Test case to verify the behavior when the name field is empty."""
         name = ""
         form = AuthorFormInput(data={'name': name})
         pattern = form.fields['name'].widget.attrs['pattern']
