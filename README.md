@@ -346,6 +346,14 @@ To create models on ElephantSQL you need to do the following steps:
    ```
 2. Follow the instruction in [env.md](env.md) file.
 3. On your local machine, must be installed Python 3.9.19 or higher.
+4. Create a virtual environment by running this command in your terminal:
+   ```bash
+   python -m venv venv
+   ```
+5. Activate the virtual environment by running this command in your terminal:
+   ```bash
+    source venv/Scripts/activate
+    ```
 4. Install all dependencies from the requirements.txt file by running this command in your terminal:
    ```bash
    pip install -r requirements.txt
@@ -405,7 +413,7 @@ To run unit tests locally and see coverage reports, you need:
    ```bash
    ./coverage.sh
    ```
-4. If you use Windows, in your browser should be opened a new tabs with the coverage reports.
+4. The browser should be opened a new tabs with the coverage reports.
 
 ## Credits
 
