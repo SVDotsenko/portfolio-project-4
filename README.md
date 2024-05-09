@@ -62,7 +62,7 @@ Administrator functionality:
 - Editing book authors.
 - For Adding and Editing book authors operations, implemented complex validations on client and server sides.
   - Client side: the input field cannot be empty and should be at least 1 character long.
-  - Server side: Each letter must be capital.
+  - Server side: each word must start with a capital letter separated by a space.
 - Deleting book authors.
 - Adding new books.
 - Editing existing books.
