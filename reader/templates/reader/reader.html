@@ -86,8 +86,13 @@
             <div class="tm-col tm-col-small">
                 <div class="bg-white tm-block">
                     <h2 class="tm-block-title text-center">Profile Image</h2>
-                    <img src="{{ reader.image.url }}" alt="Profile Image" class="img-fluid d-block mx-auto"
-                         id="preview">
+                    <img
+                            {% if reader.image.url %}
+                                src="{{ reader.image.url }}"
+                            {% else %}
+                                src="{% static 'img/user-solid.svg' %}"
+                            {% endif %}
+                                alt="Profile Image" class="img-fluid d-block mx-auto" id="preview">
                     <div class="custom-file mt-3 mb-3 d-grid">
                         <input name="fileInput" id="fileInput" type="file" class="d-none"
                                onchange="previewImage(event)">
