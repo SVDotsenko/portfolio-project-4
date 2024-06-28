@@ -150,6 +150,7 @@ Administrator functionality:
 - Pagination, if there is a lot of content.
 - Use ajax to avoid page reloading.
 - Returning a book from the profile page.
+- External link field in the books from which the book content could be accessed.
 
 ## GitHub Project Board
 
@@ -196,7 +197,7 @@ The User model handles user authentication, the ProfileImage model handles user 
    - jQuery came with Bootstrap to make the navbar responsive but was also used to show tooltips.
 1. [Google Chrome 124.0.6367.62:](https://www.google.com/chrome)
    - Google Chrome was used as a browser to render and debug this project.
-1. [Django 4.2.11:](https://www.djangoproject.com)
+1. [Django 4.1.13:](https://www.djangoproject.com)
    - Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design.
    - There were also used other [libraries](requirements.txt) in this project.
 1. [ElephantSQL:](https://www.elephantsql.com)
@@ -348,11 +349,11 @@ To create models on ElephantSQL you need to do the following steps:
 3. On your local machine, must be installed Python 3.9.19 or higher.
 4. Create a virtual environment by running this command in your terminal:
    ```bash
-   python -m venv venv
+   python -m venv .venv
    ```
 5. Activate the virtual environment by running this command in your terminal:
    ```bash
-    source venv/Scripts/activate
+    source .venv/Scripts/activate
     ```
 4. Install all dependencies from the requirements.txt file by running this command in your terminal:
    ```bash
