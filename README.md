@@ -353,7 +353,7 @@ To create models on ElephantSQL you need to do the following steps:
    ```
 5. Activate the virtual environment by running this command in your terminal:
    ```bash
-    source .venv/Scripts/activate
+   source .venv/Scripts/activate
     ```
 4. Install all dependencies from the requirements.txt file by running this command in your terminal:
    ```bash

@@ -61,6 +61,23 @@ class TestAuthorView(TestCase):
         self.client.post(reverse('add_author'), post_data)
         self.assertEqual(Author.objects.count(), 2)
 
+    def test_add_author_non_admin(self):
+        """
+        Test case to verify that a non-admin user cannot add an author.
+        """
+        self.user = User.objects.create_user(
+            username='reader',
+            password='readerPassword',
+            email='test@test.com'
+        )
+        self.client.login(username='reader', password='readerPassword')
+        post_data = {'name': 'Test Author2'}
+        original_count = Author.objects.count()
+        self.client.post(reverse('add_author'), post_data)
+        self.assertEqual(Author.objects.count(), original_count)
+        response = self.client.get(reverse('add_author'))
+        self.assertEqual(response.status_code, 302)
+
     def test_successful_author_update(self):
         """Test case to verify successful author update."""
         self.client.login(username='myUsername', password='myPassword')
@@ -76,6 +93,30 @@ class TestAuthorView(TestCase):
         updated_name = Author.objects.get(id=self.author.id).name
         self.assertEqual(updated_name, new_name)
 
+    def test_update_author_non_admin(self):
+        """
+        Test case to verify that a non-admin user cannot update an author.
+        """
+        self.user = User.objects.create_user(
+            username='reader',
+            password='readerPassword',
+            email='test@test.com'
+        )
+        self.client.login(username='reader', password='readerPassword')
+        post_data = {'name': 'Updated Author'}
+
+        original_name = self.author.name
+        self.client.post(
+            reverse('update_author', kwargs={'author_id': self.author.id}),
+            post_data)
+
+        self.author.refresh_from_db()
+
+        self.assertEqual(self.author.name, original_name)
+        response = self.client.get(
+            reverse('update_author', kwargs={'author_id': self.author.id}))
+        self.assertEqual(response.status_code, 302)
+
     def test_successful_author_delete(self):
         """Test case to verify successful deletion of an author."""
         self.client.login(username='myUsername', password='myPassword')
@@ -83,3 +124,18 @@ class TestAuthorView(TestCase):
         self.client.post(
             reverse('delete_author', kwargs={'author_id': self.author.id}))
         self.assertEqual(Author.objects.count(), 0)
+
+    def test_delete_author_non_admin(self):
+        """
+        Test case to verify that a non-admin user cannot delete an author.
+        """
+        self.user = User.objects.create_user(
+            username='reader',
+            password='readerPassword',
+            email='test@test.com'
+        )
+        self.client.login(username='reader', password='readerPassword')
+        original_count = Author.objects.count()
+        self.client.post(
+            reverse('delete_author', kwargs={'author_id': self.author.id}))
+        self.assertEqual(Author.objects.count(), original_count)

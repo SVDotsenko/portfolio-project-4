@@ -1,6 +1,7 @@
-from django.urls import reverse
 from django.contrib.auth.models import User
 from django.test import TestCase
+from django.urls import reverse
+
 from author.models import Author
 from book.models import Book
 
@@ -46,6 +47,23 @@ class TestBookView(TestCase):
         self.client.post(reverse('add_book'), post_data)
         self.assertEqual(Book.objects.count(), 2)
 
+    def test_add_book_non_admin(self):
+        """
+        Test case to verify that a non-admin user cannot add a book.
+        """
+        self.user = User.objects.create_user(
+            username='reader',
+            password='readerPassword',
+            email='test@test.com'
+        )
+        self.client.login(username='reader', password='readerPassword')
+        post_data = {'title': 'Test Book2', 'author': self.author.id}
+        original_count = Book.objects.count()
+        self.client.post(reverse('add_book'), post_data)
+        self.assertEqual(Book.objects.count(), original_count)
+        response = self.client.get(reverse('add_book'))
+        self.assertEqual(response.status_code, 302)
+
     def test_successful_book_update(self):
         """
         Test case to verify successful book update.
@@ -65,6 +83,27 @@ class TestBookView(TestCase):
         updated_title = Book.objects.get(id=self.book.id).title
         self.assertEqual(updated_title, new_title)
 
+    def test_update_book_non_admin(self):
+        """
+        Test case to verify that a non-admin user cannot update a book.
+        """
+        self.user = User.objects.create_user(
+            username='reader',
+            password='readerPassword',
+            email='test@test.com'
+        )
+        self.client.login(username='reader', password='readerPassword')
+        post_data = {'title': 'Updated Book', 'author': self.author.id}
+        original_title = self.book.title
+        self.client.post(
+            reverse('update_book', kwargs={'book_id': self.book.id}),
+            post_data)
+        self.book.refresh_from_db()
+        self.assertEqual(self.book.title, original_title)
+        response = self.client.get(
+            reverse('update_book', kwargs={'book_id': self.book.id}))
+        self.assertEqual(response.status_code, 302)
+
     def test_successful_book_delete(self):
         """
         Test case to verify successful deletion of a book.
@@ -79,6 +118,21 @@ class TestBookView(TestCase):
         self.client.post(
             reverse('delete_book', kwargs={'book_id': self.book.id}))
         self.assertEqual(Book.objects.count(), 0)
+
+    def test_delete_book_non_admin(self):
+        """
+        Test case to verify that a non-admin user cannot delete a book.
+        """
+        self.user = User.objects.create_user(
+            username='reader',
+            password='readerPassword',
+            email='test@test.com'
+        )
+        self.client.login(username='reader', password='readerPassword')
+        original_count = Book.objects.count()
+        self.client.post(
+            reverse('delete_book', kwargs={'book_id': self.book.id}))
+        self.assertEqual(Book.objects.count(), original_count)
 
     def test_toggle_reader(self):
         """
