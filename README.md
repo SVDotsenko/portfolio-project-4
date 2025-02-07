@@ -22,8 +22,6 @@ The application's user interface is designed to be intuitive and user-friendly, 
 
 ---
 
-[View live project here](https://pp4-library-f562eb8422f8.herokuapp.com)
-
 ![Responsive design](static/img/readme/smartphones.png)
 
 ![Responsive design](static/img/readme/desktop.png)
